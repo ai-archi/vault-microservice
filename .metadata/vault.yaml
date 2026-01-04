@@ -1,0 +1,67 @@
+name: Microservice Vault
+type: microservice
+description: |
+  这是一个专注于微服务架构设计与研发的 Vault，提供完整的微服务文档模板和 AI 增强命令。
+
+  该 Vault 包含了以下内容：
+
+  ## 模板资源
+
+  ### 目录结构模板
+  - `archi-templates/structure/microservice-template.yml`: 微服务标准目录结构模板
+    - 采用编号目录结构（01-overview, 02-domain 等），参考 C4 模型
+    - 支持 DDD 领域划分（核心域、支撑域、通用域）
+    - 包含完整的微服务文档目录结构
+
+  ### 内容模板
+  - `archi-templates/content/microservice/`: 微服务文档内容模板
+    - **服务概览**: service-overview.md, context-diagram.md, architecture.md
+    - **DDD 领域**: domain-overview.md, subdomain-mapping.md, bounded-context.md, glossary.md
+    - **子领域模板**: subdomain-readme.md, domain-model.md, use-cases.md, aggregates.md, domain-events.md
+    - **API 文档**: rest-api.md, event-api.md, api-contract.md
+    - **数据存储**: schema.md, migration-history.md, dataflow.md
+    - **运维 & SRE**: deployment.md, runbook.md, sre.md, observability.md, dependencies.md
+    - **测试**: test-strategy.md, performance-test.md
+    - **安全**: threat-model.md, authz-authn.md, data-protection.md, audit.md
+    - **交付**: ci.md, cd.md, environments.md
+
+  ### 任务模板
+  - `archi-templates/task/`: 微服务相关的任务流程模板
+    - default-task-template.yml: 默认任务模板
+    - simple-task-template.yml: 简单任务模板
+    - detailed-task-template.yml: 详细任务模板
+    - refactoring-task-template.yml: 重构任务模板
+
+  ## AI 增强命令
+
+  - `archi-ai-enhancements/commands/`: 微服务相关的 AI 增强命令
+    - `file-commands/`: 文件操作命令（创建、分析、优化等）
+    - `folder-commands/`: 文件夹操作命令（分析、优化、重构等）
+    - `design-commands/`: 设计图操作命令（分析、优化、重构、审查、总结等）
+
+  这些命令专门针对微服务架构文档的特点，帮助用户：
+  - 快速创建微服务文档
+  - 分析和优化微服务架构设计
+  - 进行 DDD 领域模型分析
+  - 审查 API 设计和数据模型
+  - 优化部署和运维配置
+
+  ## 使用场景
+
+  1. **新建微服务**: 使用 microservice-template.yml 创建标准化的微服务文档结构
+  2. **文档编写**: 使用 content/microservice/ 下的模板快速编写各类文档
+  3. **架构分析**: 使用 AI 增强命令分析现有微服务架构
+  4. **架构优化**: 使用 AI 增强命令优化微服务设计和文档
+  5. **DDD 实践**: 使用领域相关模板进行领域驱动设计
+
+# Git 仓库信息（如果是从 git clone 的 vault）
+remote:
+  url: "https://github.com/ai-archi/vault-microservice" # Git 仓库 URL
+  branch: main # 分支名称，默认为 main
+  sync: manual # 同步策略: auto（自动）或 manual（手动）
+
+# 权限控制
+readonly: true # 是否只读，从 git clone 的 vault 默认为 true，本地创建的默认为 false
+
+createdAt: 2025-11-22T00:00:00.000Z
+updatedAt: 2025-01-20T00:00:00.000Z
