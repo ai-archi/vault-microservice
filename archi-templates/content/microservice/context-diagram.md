@@ -8,6 +8,8 @@
 
 系统上下文图（System Context Diagram）是 C4 模型的第一层，用于展示微服务与外部用户和系统之间的高层次交互关系。
 
+> **说明**: 本文档专注于系统上下文的可视化表示，服务上下文的详细文字描述请参考 [[service-overview.md]] 文档。
+
 ## 服务边界
 
 {{serviceBoundaryDescription}}
@@ -59,11 +61,7 @@ C4Context
 2. **{{interaction2}}**: {{interactionDescription2}}
 3. **{{interaction3}}**: {{interactionDescription3}}
 
-## 非功能性需求
-
-- **性能**: {{performanceRequirement}}
-- **可用性**: {{availabilityRequirement}}
-- **安全性**: {{securityRequirement}}
+> **注意**: 非功能性需求请参考 [[service-overview.md]] 文档。
 
 ## 相关文档
 

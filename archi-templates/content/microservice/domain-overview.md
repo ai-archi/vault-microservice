@@ -91,7 +91,7 @@ mindmap
 - [[subdomain-mapping.md]] - 子领域映射
 - [[bounded-context.md]] - 限界上下文
 - [[glossary.md]] - 领域术语表
-- [[core-domain/README.md]] - 核心域详情
+- [[core-domain/domain-model.md]] - 核心域领域模型
 
 ## 变更记录
 

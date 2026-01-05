@@ -189,7 +189,7 @@ graph LR
 
 ## 相关文档
 
-- [[README.md]] - 子领域说明
+- [[domain-services.md]] - 领域服务设计（详细设计）
 - [[use-cases.md]] - 业务用例
 - [[aggregates.md]] - 聚合根详细说明
 - [[domain-events.md]] - 领域事件定义

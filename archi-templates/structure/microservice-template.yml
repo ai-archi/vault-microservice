@@ -54,13 +54,13 @@ structure:
         description: 核心域目录（示例，请根据实际子领域名称重命名）
         children:
           - type: file
-            name: README.md
-            description: 子领域说明
-            template: vault-assistant/archi-templates/content/microservice/subdomain-readme.md
-          - type: file
             name: domain-model.md
             description: 聚合、实体、值对象、领域事件
             template: vault-assistant/archi-templates/content/microservice/domain-model.md
+          - type: file
+            name: domain-services.md
+            description: 领域服务设计（服务列表、接口定义、实现说明、依赖关系、跨领域协作）
+            template: vault-assistant/archi-templates/content/microservice/domain-services.md
           - type: file
             name: use-cases.md
             description: 业务用例
@@ -79,13 +79,13 @@ structure:
         description: 支撑域目录（示例，请根据实际子领域名称重命名）
         children:
           - type: file
-            name: README.md
-            description: 子领域说明
-            template: vault-assistant/archi-templates/content/microservice/subdomain-readme.md
-          - type: file
             name: domain-model.md
             description: 领域模型
             template: vault-assistant/archi-templates/content/microservice/domain-model.md
+          - type: file
+            name: domain-services.md
+            description: 领域服务设计（服务列表、接口定义、实现说明、依赖关系、跨领域协作）
+            template: vault-assistant/archi-templates/content/microservice/domain-services.md
           - type: file
             name: use-cases.md
             description: 业务用例
@@ -96,13 +96,13 @@ structure:
         description: 通用域目录（示例，请根据实际子领域名称重命名）
         children:
           - type: file
-            name: README.md
-            description: 子领域说明
-            template: vault-assistant/archi-templates/content/microservice/subdomain-readme.md
-          - type: file
             name: domain-model.md
             description: 领域模型
             template: vault-assistant/archi-templates/content/microservice/domain-model.md
+          - type: file
+            name: domain-services.md
+            description: 领域服务设计（服务列表、接口定义、实现说明、依赖关系、跨领域协作）
+            template: vault-assistant/archi-templates/content/microservice/domain-services.md
           - type: file
             name: use-cases.md
             description: 业务用例
@@ -135,9 +135,6 @@ structure:
         name: schema.md
         description: 数据库结构文档
         template: vault-assistant/archi-templates/content/microservice/schema.md
-      - type: file
-        name: ddl
-        description: 数据库 DDL 版本文件
       - type: file
         name: migration-history.md
         description: 迁移历史（适配 Anchor Model）

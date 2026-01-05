@@ -156,7 +156,8 @@ graph LR
 
 ## 相关文档
 
-- [[README.md]] - 子领域说明
+- [[domain-model.md]] - 领域模型
+- [[domain-services.md]] - 领域服务设计
 - [[domain-model.md]] - 领域模型
 - [[aggregates.md]] - 聚合根详细说明
 
