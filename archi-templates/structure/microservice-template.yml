@@ -25,6 +25,10 @@ structure:
         name: architecture.md
         description: 架构概览（C4 L2/L3、分层结构）
         template: vault-assistant/archi-templates/content/microservice/architecture.md
+      - type: file
+        name: directory-structure.md
+        description: 目录结构设计文档
+        template: vault-assistant/archi-templates/content/microservice/directory-structure.md
 
   # 2. DDD 领域文档
   - type: directory
