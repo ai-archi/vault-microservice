@@ -8,11 +8,9 @@
 
 {{serviceDescription}}
 
+> **说明**: 本文档从**技术/架构视角**描述服务的定位、职责和技术特性。产品定位、目标用户和价值主张等业务信息请参考 [[../02-product/product-overview.md]] 文档。
+
 ## 服务定位
-
-### 业务定位
-
-{{businessPosition}}
 
 ### 技术定位
 
@@ -21,6 +19,10 @@
 ### 在微服务架构中的角色
 
 {{roleInMicroservicesArchitecture}}
+
+### 服务边界
+
+{{serviceBoundary}}
 
 ## 服务职责
 
@@ -96,7 +98,8 @@
 
 - [[context-diagram.md]] - 系统上下文图
 - [[architecture.md]] - 架构概览
-- [[../02-domain/domain-overview.md]] - 领域概览
+- [[../02-product/product-overview.md]] - 产品概览（产品/业务视角）
+- [[../03-domain/domain-overview.md]] - 领域概览
 
 ## 变更记录
 
