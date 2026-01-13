@@ -60,6 +60,46 @@ graph TB
 
 {{sharedKernelDescription}}
 
+**基础设施层技术工具说明**：
+
+基础设施层技术工具不属于限界上下文，但为所有限界上下文提供技术支持。这些工具包括：
+
+- **异常处理**：统一的异常捕获、分类和处理机制
+- **日志**：应用日志和错误日志的记录和管理
+- **ID 生成器**：唯一标识符生成（UUID、有序 ID 等）
+- **序列化服务**：数据序列化和反序列化（JSON、二进制等）
+- **时间服务**：时间相关操作（时区处理、时间格式化等）
+- **加密服务**：数据加密和解密服务
+- **数据验证工具**：数据格式和规则验证工具
+- **资源管理工具**：系统资源管理（内存、CPU 监控等）
+- **异步任务管理工具**：异步任务执行管理
+- **缓存管理工具**：内存缓存管理
+
+所有限界上下文通过客户-供应商（C-S）关系使用这些技术工具，通过工具类或工具函数的方式调用。
+
+**详细文档**：[[infrastructure/tools/01-tools-overview.md]] - 技术工具概览
+
+**基础设施层数据访问抽象说明**：
+
+数据访问抽象不属于限界上下文，而是基础设施层的抽象接口，为所有限界上下文提供通用的数据访问抽象接口支持。
+
+**数据访问抽象**：
+- **定位**：基础设施层抽象
+- **职责**：提供通用抽象接口（IRepository<T>、IQueryBuilder<T>、ITransactionManager）
+- **职责边界**：仅提供通用抽象接口，不定义具体业务域的Repository接口
+
+**职责划分**：
+- **数据访问抽象**：仅提供通用抽象接口，属于基础设施层抽象
+- **具体业务域Repository接口**：各业务上下文定义自己的Repository接口（如 `I{{AggregateRoot1}}Repository`），属于领域层
+- **Repository实现**：在基础设施层实现领域层定义的具体Repository接口
+
+**与业务上下文的关系**：
+- 各业务上下文定义自己的Repository接口（如 `I{{AggregateRoot1}}Repository`、`I{{AggregateRoot2}}Repository`）
+- 具体Repository接口可能继承或使用通用抽象接口（IRepository<T>）
+- 基础设施层实现具体的Repository接口，使用通用抽象接口提供的功能
+
+**详细文档**：[[infrastructure/data-access/01-data-access-abstraction.md]] - 数据访问抽象设计
+
 #### 客户-供应商（Customer-Supplier）
 
 {{customerSupplierDescription}}
@@ -86,19 +126,18 @@ graph TB
 
 ## 通用语言（Ubiquitous Language）
 
-### 领域术语
-
-| 术语 | 定义 | 使用场景 |
-|------|------|---------|
-| {{term1}} | {{definition1}} | {{usageScenario1}} |
-| {{term2}} | {{definition2}} | {{usageScenario2}} |
+> **说明**：详细的领域术语定义请参考 [[glossary.md]] 文档。本文档仅描述上下文特定的术语映射关系。
 
 ### 术语映射
+
+不同上下文之间可能存在概念相似但术语不同的情况，需要建立术语映射关系：
 
 | 本上下文术语 | 外部上下文术语 | 映射关系 |
 |------------|--------------|---------|
 | {{localTerm1}} | {{externalTerm1}} | {{mappingRelation1}} |
 | {{localTerm2}} | {{externalTerm2}} | {{mappingRelation2}} |
+
+> 完整的领域术语表请参考 [[glossary.md]] 文档。
 
 ## 上下文边界规则
 
@@ -134,7 +173,9 @@ graph TB
 
 - [[domain-overview.md]] - 领域概览
 - [[subdomain-mapping.md]] - 子领域映射
-- [[glossary.md]] - 领域术语表
+- [[glossary.md]] - 领域术语表（术语的唯一来源）
+- [[infrastructure/01-infrastructure-overview.md]] - 基础设施层概览
+- [[infrastructure/tools/01-tools-overview.md]] - 技术工具概览
 
 ## 变更记录
 

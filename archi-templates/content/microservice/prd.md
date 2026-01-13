@@ -89,7 +89,7 @@
 - [[product-overview.md]] - 产品概览
 - [[user-stories.md]] - 用户故事
 - [[features.md]] - 功能规格说明
-- [[../03-domain/domain-overview.md]] - 领域概览
+- [[../03-domain/overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 

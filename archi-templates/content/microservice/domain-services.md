@@ -241,7 +241,7 @@ sequenceDiagram
 - [[aggregates.md]] - 聚合根详细说明
 - [[domain-events.md]] - 领域事件定义
 - [[use-cases.md]] - 业务用例
-- [[../../subdomain-mapping.md]] - 子领域映射（领域级别的协作关系）
+- [[../../overview/subdomain-mapping.md]] - 子领域映射（领域级别的协作关系）
 
 ## 变更记录
 

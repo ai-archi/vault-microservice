@@ -170,7 +170,7 @@ curl -X {{httpMethod1}} "{{baseUrl}}{{endpoint1}}" \
 
 - [[event-api.md]] - 事件接口文档
 - [[api-contract.md]] - API 契约定义
-- [[../02-domain/domain-overview.md]] - 领域概览
+- [[../03-domain/overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 

@@ -60,7 +60,7 @@
 - [[use-cases.md]] - 业务用例
 - [[aggregates.md]] - 聚合根详细说明
 - [[domain-events.md]] - 领域事件定义
-- [[../../domain-overview.md]] - 领域概览
+- [[../../overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 

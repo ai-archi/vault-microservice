@@ -157,7 +157,7 @@
 
 - [[rest-api.md]] - REST API文档
 - [[event-api.md]] - 事件接口文档
-- [[../02-domain/domain-overview.md]] - 领域概览
+- [[../03-domain/overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 

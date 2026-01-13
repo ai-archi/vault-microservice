@@ -1,5 +1,5 @@
 id: refactoring-task-template
-name: 架构重构任务模板
+name: 重构任务模板
 description: 通用架构重构流程：现状分析 → 架构设计 → 迁移计划 → 分阶段实施 → 测试验证 → 文档更新
 category: task
 # 步骤定义

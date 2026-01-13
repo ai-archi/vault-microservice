@@ -184,7 +184,7 @@ graph TB
 - [[service-overview.md]] - 服务概览
 - [[architecture.md]] - 架构概览
 - [[context-diagram.md]] - 系统上下文图
-- [[../02-domain/domain-overview.md]] - 领域概览
+- [[../03-domain/overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 

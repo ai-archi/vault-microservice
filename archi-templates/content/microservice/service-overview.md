@@ -99,7 +99,7 @@
 - [[context-diagram.md]] - 系统上下文图
 - [[architecture.md]] - 架构概览
 - [[../02-product/product-overview.md]] - 产品概览（产品/业务视角）
-- [[../03-domain/domain-overview.md]] - 领域概览
+- [[../03-domain/overview/domain-overview.md]] - 领域概览
 
 ## 变更记录
 
