@@ -225,30 +225,34 @@ structure:
     name: 06-presentation
     description: 表现层设计文档（客户端应用，DDD Presentation Layer）
     children:
-      - type: file
-        name: 01-presentation-overview.md
-        description: 表现层概览，包含表现层定位、职责、设计原则和组件概览
-        template: vault-assistant/archi-templates/content/microservice/presentation-overview.md
-      - type: file
-        name: 02-routing-design.md
-        description: 路由设计，包含路由配置、导航守卫、深链接支持
-        template: vault-assistant/archi-templates/content/microservice/routing-design.md
-      - type: file
-        name: 03-state-management-design.md
-        description: 状态管理设计，包含状态管理方案、状态同步、状态持久化
-        template: vault-assistant/archi-templates/content/microservice/state-management-design.md
-      - type: file
-        name: 04-ui-components-design.md
-        description: UI组件设计，包含组件库、组件规范、主题管理
-        template: vault-assistant/archi-templates/content/microservice/ui-components-design.md
-      # 子领域UI设计目录（示例：核心域UI）
       - type: directory
-        name: core-domain-xxx
-        description: "{{subdomainName}}UI设计目录（示例，请根据实际子领域名称重命名，如core-domain-order）"
+        name: overview
+        description: 表现层概览文档
         children:
           - type: file
-            name: 01-ui-design.md
-            description: "{{subdomainName}}UI设计，包含页面设计、交互流程、组件使用"
+            name: 01-presentation-overview.md
+            description: 表现层概览，包含表现层定位、职责、设计原则和组件概览
+            template: vault-assistant/archi-templates/content/microservice/presentation-overview.md
+          - type: file
+            name: 02-routing-design.md
+            description: 路由设计，包含路由配置、导航守卫、深链接支持
+            template: vault-assistant/archi-templates/content/microservice/routing-design.md
+          - type: file
+            name: 03-state-management-design.md
+            description: 状态管理设计，包含状态管理方案、状态同步、状态持久化
+            template: vault-assistant/archi-templates/content/microservice/state-management-design.md
+          - type: file
+            name: 04-ui-components-design.md
+            description: UI组件设计，包含组件库、组件规范、主题管理
+            template: vault-assistant/archi-templates/content/microservice/ui-components-design.md
+      # 视图目录（示例：订单视图）
+      - type: directory
+        name: view-xxx
+        description: "{{viewName}}视图目录（示例，请根据实际视图名称重命名，如view-order、view-product）"
+        children:
+          - type: file
+            name: 01-view-design.md
+            description: "{{viewName}}视图设计，包含视图结构、视图模型、页面布局、交互流程、组件使用"
             template: vault-assistant/archi-templates/content/microservice/ui-design.md
 
   # 7. 数据存储
