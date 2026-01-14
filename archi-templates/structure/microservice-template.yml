@@ -257,7 +257,7 @@ structure:
 
   # 7. 数据存储
   - type: directory
-    name: 06-storage
+    name: 07-storage
     description: 数据库与数据流
     children:
       - type: file
