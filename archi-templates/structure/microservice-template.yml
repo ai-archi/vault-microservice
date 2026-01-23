@@ -1,5 +1,5 @@
 name: microservice-template
-description: 单微服务标准知识库目录结构
+description: 单微服务标准知识库目录结构（按业务领域分包，包内按领域分层）
 type: dir-structure
 structure:
   # 根 README
@@ -27,7 +27,7 @@ structure:
         template: vault-assistant/archi-templates/content/microservice/architecture.md
       - type: file
         name: 04-directory-structure.md
-        description: 目录结构设计文档
+        description: 目录结构设计文档（按业务领域分包说明）
         template: vault-assistant/archi-templates/content/microservice/directory-structure.md
 
   # 2. 产品设计
@@ -64,23 +64,23 @@ structure:
         description: 产品指标、KPI、数据埋点
         template: vault-assistant/archi-templates/content/microservice/metrics.md
 
-  # 3. DDD 领域文档
+  # 3. 按业务领域分包组织（核心变化）
   - type: directory
-    name: 03-domain
-    description: 领域模型（DDD）
+    name: 03-domains
+    description: 按业务领域分包组织，每个领域内部按DDD分层
     children:
-      # 领域概览文档目录
+      # 领域概览（系统级）
       - type: directory
-        name: overview
-        description: 领域概览文档
+        name: 01-overview
+        description: 领域概览文档（系统级领域划分）
         children:
           - type: file
-            name: 01-domain-overview.md
-            description: 领域概览，包含总体领域划分和子领域说明
-            template: vault-assistant/archi-templates/content/microservice/domain-overview.md
+            name: 01-domains-overview.md
+            description: 领域划分说明、领域依赖关系
+            template: vault-assistant/archi-templates/content/microservice/domains-overview.md
           - type: file
-            name: 02-subdomain-mapping.md
-            description: 子领域映射（核心域/支撑域/通用域）和上下文映射（Context Mapping）
+            name: 02-domain-mapping.md
+            description: 子领域映射（核心域/支撑域/通用域划分）和上下文映射（Context Mapping）
             template: vault-assistant/archi-templates/content/microservice/subdomain-mapping.md
           - type: file
             name: 03-bounded-context.md
@@ -90,143 +90,133 @@ structure:
             name: 04-glossary.md
             description: 领域术语表（全局）
             template: vault-assistant/archi-templates/content/microservice/glossary.md
-      # 子领域目录（示例：核心域）
+      # 业务领域1（示例）
       - type: directory
-        name: core-domain
-        description: 核心域目录（示例，请根据实际子领域名称重命名）
+        name: domain-xxx
+        description: '业务领域1（示例，请根据实际领域名称重命名，如user-domain、order-domain）'
         children:
-          - type: file
-            name: 01-domain-model.md
-            description: 领域模型文档（包含聚合根、实体、值对象、领域服务、领域事件、Repository接口、业务规则）
-            template: vault-assistant/archi-templates/content/microservice/domain-model.md
-          - type: file
-            name: 02-use-cases.md
-            description: 业务用例文档（可选但强烈推荐，包含用例列表、用例详细说明、用例关系）
-            template: vault-assistant/archi-templates/content/microservice/use-cases.md
-      # 子领域目录（示例：支撑域）
-      - type: directory
-        name: supporting-domain-xxx
-        description: 支撑域目录（示例，请根据实际子领域名称重命名）
-        children:
-          - type: file
-            name: 01-domain-model.md
-            description: 领域模型文档（包含聚合根、实体、值对象、领域服务、领域事件、Repository接口、业务规则）
-            template: vault-assistant/archi-templates/content/microservice/domain-model.md
-          - type: file
-            name: 02-use-cases.md
-            description: 业务用例文档（可选但强烈推荐，包含用例列表、用例详细说明、用例关系）
-            template: vault-assistant/archi-templates/content/microservice/use-cases.md
-      # 子领域目录（示例：通用域）
-      - type: directory
-        name: generic-domain-xxx
-        description: 通用域目录（示例，请根据实际子领域名称重命名）
-        children:
-          - type: file
-            name: 01-domain-model.md
-            description: 领域模型文档（包含聚合根、实体、值对象、领域服务、领域事件、Repository接口、业务规则）
-            template: vault-assistant/archi-templates/content/microservice/domain-model.md
-          - type: file
-            name: 02-use-cases.md
-            description: 业务用例文档（可选但强烈推荐，包含用例列表、用例详细说明、用例关系）
-            template: vault-assistant/archi-templates/content/microservice/use-cases.md
-      # 基础设施层文档（作为领域设计的补充）
-      - type: directory
-        name: infrastructure
-        description: 基础设施层文档（技术工具、数据访问等）
-        children:
-          - type: file
-            name: 01-infrastructure-overview.md
-            description: 基础设施层概览，包含技术工具、数据访问等基础设施能力
-            template: vault-assistant/archi-templates/content/microservice/infrastructure-overview.md
+          # 领域概览
           - type: directory
-            name: tools
-            description: 技术工具文档
+            name: 01-overview
+            description: 领域概览
             children:
               - type: file
-                name: 01-tools-overview.md
-                description: 技术工具概览，包含所有工具的分类、用途和设计原则
-                template: vault-assistant/archi-templates/content/microservice/tools-overview.md
+                name: 01-domain-overview.md
+                description: 领域简介、职责、边界、技术栈
+                template: vault-assistant/archi-templates/content/microservice/domain-overview.md
               - type: file
-                name: 01-util-xxx.md
-                description: "{{toolName}}工具设计（示例：02-exception-handling.md、03-logging.md、04-id-generator.md、05-serialization-service.md、06-time-service.md、07-encryption-service.md、08-data-validation-tool.md、09-resource-management.md、10-async-task-management.md、11-cache-management.md等）"
-                template: vault-assistant/archi-templates/content/microservice/utility-tool.md
+                name: 02-domain-structure.md
+                description: 领域内目录结构（详细说明）
+                template: vault-assistant/archi-templates/content/microservice/directory-structure.md
+          # 领域层
           - type: directory
-            name: infrastructure-xxx
-            description: "{{capabilityName}}基础设施文档（示例：infrastructure-data-access、infrastructure-file-storage、infrastructure-ai-engine等）"
+            name: 02-domain
+            description: 领域层（领域内）
             children:
               - type: file
-                name: 01-infrastructure-design.md
-                description: "{{capabilityName}}基础设施设计（抽象接口定义、成熟方案推荐、实现方案）"
-                template: vault-assistant/archi-templates/content/microservice/infrastructure/infrastructure-design-template.md
+                name: 01-domain-model.md
+                description: 领域模型（聚合根、实体、值对象、领域服务、领域事件、Repository接口、业务规则）
+                template: vault-assistant/archi-templates/content/microservice/domain-model.md
               - type: file
                 name: 02-use-cases.md
-                description: "{{capabilityName}}用例（领域层、应用层、基础设施层使用用例）"
+                description: 业务用例文档（可选但强烈推荐，包含用例列表、用例详细说明、用例关系）
                 template: vault-assistant/archi-templates/content/microservice/use-cases.md
-
-  # 4. 应用层设计
-  - type: directory
-    name: 04-application
-    description: 应用层设计（DDD Application Layer）
-    children:
-      - type: file
-        name: 01-application-overview.md
-        description: 应用层概览，包含应用层定位、职责、设计原则和组件概览
-        template: vault-assistant/archi-templates/content/microservice/application-overview.md
-      - type: file
-        name: 02-application-services.md
-        description: 应用服务设计，包含应用服务接口定义、实现模式和设计原则
-        template: vault-assistant/archi-templates/content/microservice/application-services.md
-      - type: file
-        name: 03-cqrs-design.md
-        description: CQRS模式设计，包含命令处理器和查询处理器设计
-        template: vault-assistant/archi-templates/content/microservice/cqrs-design.md
-      - type: file
-        name: 04-dto-design.md
-        description: DTO设计，包含DTO定义规范、与领域模型的转换规则
-        template: vault-assistant/archi-templates/content/microservice/dto-design.md
-      # 子领域应用层目录（示例：核心域应用层）
+              - type: file
+                name: 03-bounded-context.md
+                description: 限界上下文（如需要）
+                template: vault-assistant/archi-templates/content/microservice/bounded-context.md
+          # 应用层
+          - type: directory
+            name: 03-application
+            description: 应用层（领域内）
+            children:
+              - type: file
+                name: 01-application-overview.md
+                description: 应用层概览、设计原则、职责边界
+                template: vault-assistant/archi-templates/content/microservice/application-overview.md
+              - type: file
+                name: 02-application-services.md
+                description: 应用服务设计（包含CQRS、命令、查询、DTO、应用用例的完整实现细节）
+                template: vault-assistant/archi-templates/content/microservice/application-services.md
+          # API层
+          - type: directory
+            name: 04-apis
+            description: API层（领域内）
+            children:
+              - type: file
+                name: 01-rest-api.md
+                description: HTTP API 定义
+                template: vault-assistant/archi-templates/content/microservice/rest-api.md
+              - type: file
+                name: 02-event-api.md
+                description: 事件接口（事件驱动架构）
+                template: vault-assistant/archi-templates/content/microservice/event-api.md
+              - type: file
+                name: 03-api-contract.md
+                description: API契约定义
+                template: vault-assistant/archi-templates/content/microservice/api-contract.md
+          # 基础设施层（与domain、application同级）
+          - type: directory
+            name: 05-infrastructure
+            description: 基础设施层（领域内，与domain、application同级）
+            children:
+              - type: file
+                name: 01-infrastructure-overview.md
+                description: 基础设施层概览，包含技术工具、数据访问等基础设施能力
+                template: vault-assistant/archi-templates/content/microservice/infrastructure-overview.md
+              - type: file
+                name: 02-tool-xxx.md
+                description: 技术工具设计（示例，请根据实际工具名称重命名，如exception-handling、logging、id-generator、serialization-service、time-service、encryption-service、data-validation-tool、resource-management、async-task-management、cache-management等）
+                template: vault-assistant/archi-templates/content/microservice/utility-tool.md
+              - type: file
+                name: 03-infrastructure-xx.md
+                description: 基础设施设计（示例，请根据实际基础设施名称重命名，如data-access、file-storage、ai-engine等）
+                template: vault-assistant/archi-templates/content/microservice/infrastructure/infrastructure-design-template.md
+          # 表现层（可选，如该领域有特定UI需求）
+          - type: directory
+            name: 06-presentation
+            description: 表现层（领域内，可选，如该领域有特定UI需求）
+            children:
+              - type: file
+                name: 01-presentation-overview.md
+                description: 表现层概览（如该领域有特定UI需求）
+                template: vault-assistant/archi-templates/content/microservice/presentation-overview.md
+              - type: file
+                name: 02-view-design.md
+                description: 视图设计（如该领域有特定视图）
+                template: vault-assistant/archi-templates/content/microservice/ui-design.md
+      # 共享模块（如适用）
       - type: directory
-        name: core-domain-xxx
-        description: "{{subdomainName}}应用层目录（示例，请根据实际子领域名称重命名，如core-domain-order）"
+        name: 02-shared
+        description: 共享模块（如适用，跨领域的技术性共享能力）
         children:
-          - type: file
-            name: 01-application-service.md
-            description: "{{subdomainName}}应用服务设计"
-            template: vault-assistant/archi-templates/content/microservice/application-service.md
-          - type: file
-            name: 02-commands.md
-            description: "{{subdomainName}}命令处理器设计（CQRS Command）"
-            template: vault-assistant/archi-templates/content/microservice/commands.md
-          - type: file
-            name: 03-queries.md
-            description: "{{subdomainName}}查询处理器设计（CQRS Query）"
-            template: vault-assistant/archi-templates/content/microservice/queries.md
+          # 共享模块概览
+          - type: directory
+            name: 01-overview
+            description: 共享模块概览
+            children:
+              - type: file
+                name: 01-shared-modules-overview.md
+                description: 共享模块概览
+                template: vault-microservice/archi-templates/content/microservice/shared-modules-overview.md
+          # 共享模块（示例，请根据实际模块名称重命名，如app-bus、event-bus、logging等）
+          - type: directory
+            name: 02-command-bus
+            description: '命令总线模块（示例，请根据实际模块名称重命名，如event-bus、logging等）'
+            children:
+              - type: file
+                name: 01-module-overview.md
+                description: 模块概览（包含模块说明、接口设计、实现架构、使用方式、技术栈等）
+                template: vault-microservice/archi-templates/content/microservice/shared-module-overview.md
 
-  # 5. API 文档
+  # 4. 表现层（全局，如适用）
   - type: directory
-    name: 05-apis
-    description: 服务接口文档（REST/GraphQL/Event）
+    name: 04-presentation
+    description: 表现层设计文档（全局，如适用）
     children:
-      - type: file
-        name: 01-rest-api.md
-        description: HTTP API 定义
-        template: vault-assistant/archi-templates/content/microservice/rest-api.md
-      - type: file
-        name: 02-event-api.md
-        description: 事件接口（事件驱动架构）
-        template: vault-assistant/archi-templates/content/microservice/event-api.md
-      - type: file
-        name: 03-api-contract.md
-        description: API契约定义
-        template: vault-assistant/archi-templates/content/microservice/api-contract.md
-
-  # 6. 表现层设计（客户端应用）
-  - type: directory
-    name: 06-presentation
-    description: 表现层设计文档（客户端应用，DDD Presentation Layer）
-    children:
+      # 表现层概览
       - type: directory
-        name: overview
+        name: 01-overview
         description: 表现层概览文档
         children:
           - type: file
@@ -243,22 +233,160 @@ structure:
             template: vault-assistant/archi-templates/content/microservice/state-management-design.md
           - type: file
             name: 04-ui-components-design.md
-            description: UI组件设计，包含组件库、组件规范、主题管理
+            description: UI组件库概览（设计系统、组件规范、主题管理）
             template: vault-assistant/archi-templates/content/microservice/ui-components-design.md
-      # 视图目录（示例：订单视图）
+      # 组件设计
       - type: directory
-        name: view-xxx
-        description: "{{viewName}}视图目录（示例，请根据实际视图名称重命名，如view-order、view-product）"
+        name: 02-components
+        description: 组件设计（基础组件、业务组件、布局组件）
         children:
-          - type: file
-            name: 01-view-design.md
-            description: "{{viewName}}视图设计，包含视图结构、视图模型、页面布局、交互流程、组件使用"
-            template: vault-assistant/archi-templates/content/microservice/ui-design.md
+          # 组件概览
+          - type: directory
+            name: 01-overview
+            description: 组件概览
+            children:
+              - type: file
+                name: 01-components-overview.md
+                description: 组件分类、组件设计原则、组件开发规范
+                template: vault-assistant/archi-templates/content/microservice/ui-components-design.md
+          # 基础组件
+          - type: directory
+            name: 02-base
+            description: 基础组件（按钮、输入框、表格等通用组件）
+            children:
+              - type: directory
+                name: 01-button
+                description: 按钮组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 按钮组件设计，包含组件API、使用示例、样式定制
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 02-input
+                description: 输入框组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 输入框组件设计
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 03-table
+                description: 表格组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 表格组件设计
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 04-component-xxx
+                description: '基础组件（示例，请根据实际组件名称重命名，如modal、dropdown、tooltip等）'
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: '组件设计，包含组件API、使用示例、样式定制'
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+          # 业务组件
+          - type: directory
+            name: 03-business
+            description: 业务组件（订单卡片、用户头像等业务相关组件）
+            children:
+              - type: directory
+                name: 01-component-xxx
+                description: '{{componentName}}业务组件（示例，请根据实际组件名称重命名，如order-card、user-avatar）'
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: '{{componentName}}业务组件设计，包含组件API、业务逻辑、使用示例'
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+          # 布局组件
+          - type: directory
+            name: 04-layout
+            description: 布局组件（头部、侧边栏、容器等布局相关组件）
+            children:
+              - type: directory
+                name: 01-header
+                description: 头部组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 头部组件设计
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 02-sidebar
+                description: 侧边栏组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 侧边栏组件设计
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 03-container
+                description: 容器组件
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: 容器组件设计
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+              - type: directory
+                name: 04-component-xxx
+                description: '布局组件（示例，请根据实际组件名称重命名，如footer、breadcrumb、tabs等）'
+                children:
+                  - type: file
+                    name: 01-component-design.md
+                    description: '布局组件设计，包含组件API、布局规则、使用示例'
+                    template: vault-assistant/archi-templates/content/microservice/component-design.md
+      # 视图/页面设计（可选）
+      - type: directory
+        name: 03-views
+        description: 视图/页面设计（可选，或合并到components下）
+        children:
+          # 视图概览
+          - type: directory
+            name: 01-overview
+            description: 视图概览
+            children:
+              - type: file
+                name: 01-views-overview.md
+                description: 视图分类、视图设计原则、视图与组件的关系
+                template: vault-assistant/archi-templates/content/microservice/presentation-overview.md
+          # 具体视图目录（示例：订单列表视图）
+          - type: directory
+            name: 02-view-xxx
+            description: '视图目录（示例，请根据实际视图名称重命名，如order-list、order-detail、user-profile等）'
+            children:
+              - type: file
+                name: 01-view-design.md
+                description: '视图设计，包含视图结构、视图模型、页面布局、交互流程、组件使用'
+                template: vault-assistant/archi-templates/content/microservice/ui-design.md
+      # Hooks/Composables设计（如适用）
+      - type: directory
+        name: 04-hooks
+        description: Hooks/Composables设计（如适用，用于React Hooks、Vue Composables等可复用逻辑）
+        children:
+          # Hooks概览
+          - type: directory
+            name: 01-overview
+            description: Hooks概览
+            children:
+              - type: file
+                name: 01-hooks-overview.md
+                description: Hooks分类、Hooks设计原则、Hooks开发规范
+                template: vault-assistant/archi-templates/content/microservice/presentation-overview.md
+          # 具体Hook设计（示例）
+          - type: directory
+            name: 02-use-xxx
+            description: 'Hook设计（示例，请根据实际Hook名称重命名，如use-order、use-auth、use-pagination等）'
+            children:
+              - type: file
+                name: 01-hook-design.md
+                description: 'Hook设计，包含Hook API、使用示例、最佳实践'
+                template: vault-assistant/archi-templates/content/microservice/hook-design.md
 
-  # 7. 数据存储
+  # 5. 数据存储
   - type: directory
-    name: 07-storage
-    description: 数据库与数据流
+    name: 05-storage
+    description: 数据库与数据流（跨领域或全局）
     children:
       - type: file
         name: 01-schema.md
@@ -273,9 +401,9 @@ structure:
         description: 数据流、事件流说明
         template: vault-assistant/archi-templates/content/microservice/dataflow.md
 
-  # 8. 运维 & SRE
+  # 6. 运维 & SRE
   - type: directory
-    name: 08-operations
+    name: 06-operations
     description: 运维、部署、可观测性
     children:
       - type: file
@@ -299,9 +427,9 @@ structure:
         description: 故障处理手册
         template: vault-assistant/archi-templates/content/microservice/runbook.md
 
-  # 9. 测试
+  # 7. 测试
   - type: directory
-    name: 09-testing
+    name: 07-testing
     description: 测试策略与记录
     children:
       - type: file
@@ -315,10 +443,11 @@ structure:
       - type: file
         name: 03-test-cases
         description: 测试用例集
+        template: vault-assistant/archi-templates/content/microservice/test-strategy.md
 
-  # 10. 安全
+  # 8. 安全
   - type: directory
-    name: 10-security
+    name: 08-security
     description: 安全策略
     children:
       - type: file
@@ -338,9 +467,9 @@ structure:
         description: 审计日志规范
         template: vault-assistant/archi-templates/content/microservice/audit.md
 
-  # 11. 交付 & CI/CD
+  # 9. 交付 & CI/CD
   - type: directory
-    name: 11-delivery
+    name: 09-delivery
     description: 交付、版本管理、CI-CD
     children:
       - type: file
@@ -358,10 +487,11 @@ structure:
       - type: file
         name: 04-release-notes
         description: 发布说明记录
+        template: vault-assistant/archi-templates/content/microservice/service-overview.md
 
-  # 12. 架构决策 ADR
+  # 10. 架构决策 ADR
   - type: directory
-    name: 12-decisions
+    name: 10-decisions
     description: 架构决策记录（ADR）
     children:
       - type: file

@@ -117,7 +117,7 @@ graph TD
 
 ## 相关文档
 
-- [[deployment.md]] - 部署架构
+- [[../09-delivery/deployment.md]] - 部署架构
 - [[observability.md]] - 可观测性文档
 - [[sre.md]] - SRE指标文档
 

@@ -310,9 +310,7 @@ steps:
       * **更新要求**：{{ formDataItems[0].value }}
       * **调整方案**：{{ solutionPath }}
       * **变更决策**：{{ decisionRecord }}
-      {% if formDataItems[1].value is not empty %}
-        * **文档所在文件夹**：{{ formDataItems[1].value }}
-      {% endif %}
+      * **文档所在文件夹**：{{ formDataItems[1].value }}
 
       ---
 
