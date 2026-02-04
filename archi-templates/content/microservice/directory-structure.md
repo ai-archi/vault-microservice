@@ -181,10 +181,9 @@ graph TB
 
 ## 相关文档
 
-- [[service-overview.md]] - 服务概览
-- [[architecture.md]] - 架构概览
-- [[context-diagram.md]] - 系统上下文图
-- [[../03-domain/overview/domain-overview.md]] - 领域概览
+- [[01-service-overview.md]] - 服务概览（业务与系统上下文）
+- [[02-architecture.md]] - 架构概览（技术栈与选型）
+- [[../03-domains/01-overview/01-domains-overview.md]] - 领域概览
 
 ## 变更记录
 

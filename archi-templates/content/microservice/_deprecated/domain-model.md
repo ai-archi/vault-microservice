@@ -259,6 +259,8 @@ abstract class I{{DomainService1}} {
 
 ## 领域事件定义
 
+> **重要**：本节内容是领域事件定义的**单一真实来源（SSOT）**。其他文档（如 use-cases.md、api-design.md）中提及的事件应通过链接指向本部分，而非重复定义。
+
 ### {{domainEvent1}}
 
 #### 事件定义

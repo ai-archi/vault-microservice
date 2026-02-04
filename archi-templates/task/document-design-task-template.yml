@@ -1,6 +1,6 @@
 id: document-design-task-template
 name: 文件任务模板
-description: 标准任务流程：调研确认 → 编写调整方案 → 记录变更决策 → 文档更新
+description: 标准任务流程：调研确认 → 编写调整方案 → 文档更新
 category: task
 # 步骤定义
 steps:
@@ -171,113 +171,6 @@ steps:
       {% endif %}
     depends_on:
       - research-confirm
-  - id: record-decision
-    type: RecordDecisionStep
-    form:
-      title: 记录变更决策
-      schema:
-        content:
-          type: textarea
-          title: 变更决策记录内容
-          description: |
-            💡 提示：请关注以下要点：
-            1. 决策记录：记录技术选型和架构调整的决策
-            2. 决策理由：说明决策的依据和理由
-            3. 备选方案：记录备选方案和未选择的原因
-            4. 影响评估：评估决策对文档和系统的影响
-          required: false
-        selectedFolder:
-          type: folder
-          title: 选择变更决策记录文件夹
-          description: 选择变更决策记录的文件夹位置（单选）
-          multiple: false
-    prompt: |
-      你是一个**专业的决策记录专家 / 知识管理专家**，需要基于调整方案，**记录变更决策**，确保决策过程可追溯、可理解。
-
-      ---
-
-      ### 基本信息
-
-      * **任务名称**：{{ task.name }}
-      * **方案路径**：{{ solutionPath }}
-      * **记录要求**：{{ formDataItems[0].value }}
-      * **变更决策记录文件夹**：{{ formDataItems[1].value }}
-
-      ---
-
-      ## 记录变更决策链式提示
-
-      1. **决策识别**
-
-        * 识别需要记录的关键决策（技术选型、架构调整等）
-        * 明确决策的类型和重要性
-        * 确定决策的上下文和背景
-
-      2. **决策记录**
-
-        * 记录决策的内容和结果
-        * 记录决策的时间和相关人员
-        * 记录决策的版本和状态
-
-      3. **决策理由**
-
-        * 详细说明决策的依据和理由
-        * 说明决策的评估标准和过程
-        * 说明决策的合理性和必要性
-
-      4. **备选方案记录**
-
-        * 记录考虑过的备选方案
-        * 说明备选方案的优缺点
-        * 说明未选择备选方案的原因
-
-      5. **影响评估**
-
-        * 评估决策对文档的影响
-        * 评估决策对系统设计的影响
-        * 评估决策的长期影响
-
-      6. **决策文档化**
-
-        * 在指定文件夹（{{ formDataItems[1].value }}）下的文档中记录决策
-        * 在文档的"设计决策"章节记录决策
-        * 在文档的"变更记录"章节记录变更
-        * 确保决策记录格式规范、易于理解
-
-      ---
-
-      ## 决策记录约束
-
-      1. 决策记录应准确、完整，不遗漏关键信息
-      2. 决策理由应充分、有说服力
-      3. 备选方案应客观记录，不偏颇
-      4. 影响评估应全面、客观
-      5. **任务粒度说明**：本任务聚焦于变更决策的记录，应聚焦当前任务的核心决策
-
-      ---
-
-      ## 参考资料 / 相关资源
-
-      ### 调整方案
-
-      {% if solutionPath %}
-      * {{ solutionPath }}
-      {% else %}
-      （暂无调整方案）
-      {% endif %}
-
-      ### 关联文档
-
-      {% if relatedDocuments %}
-      {% for doc in relatedDocuments %}
-      * {{ doc.name }}: {{ doc.path }}
-        {% if doc.vaultName %}所属 Vault: {{ doc.vaultName }}{% endif %}
-      {% endfor %}
-      {% else %}
-      （暂无关联文档）
-      {% endif %}
-    depends_on:
-      - draft-proposal
   - id: document-update
     type: DocumentUpdateStep
     form:
@@ -299,7 +192,7 @@ steps:
           description: 选择文档所在的文件夹位置（单选）
           multiple: false
     prompt: |
-      你是一个**专业的文档编写专家 / 技术文档架构师**，需要基于调整方案和变更决策，**更新设计文档**，确保文档准确反映最新的技术选型和架构设计。
+      你是一个**专业的文档编写专家 / 技术文档架构师**，需要基于调整方案，**更新设计文档**，确保文档准确反映最新的技术选型和架构设计。
 
       ---
 
@@ -308,8 +201,7 @@ steps:
       * **任务名称**：{{ task.name }}
       * **文档路径**：{{ documentPath }}
       * **更新要求**：{{ formDataItems[0].value }}
-      * **调整方案**：{{ solutionPath }}
-      * **变更决策**：{{ decisionRecord }}
+      * **方案路径**：{{ solutionPath }}
       * **文档所在文件夹**：{{ formDataItems[1].value }}
 
       ---
@@ -380,17 +272,9 @@ steps:
       ### 调整方案
 
       {% if solutionPath %}
-      * {{ solutionPath }}
+      * **方案路径**：{{ solutionPath }}
       {% else %}
       （暂无调整方案）
-      {% endif %}
-
-      ### 变更决策记录
-
-      {% if decisionRecord %}
-      {{ decisionRecord }}
-      {% else %}
-      （暂无变更决策记录）
       {% endif %}
 
       ### 关联文档（参考文档和需要更新的文档）
@@ -404,4 +288,4 @@ steps:
       （暂无关联文档）
       {% endif %}
     depends_on:
-      - record-decision
+      - draft-proposal

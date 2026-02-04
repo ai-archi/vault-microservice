@@ -4,27 +4,21 @@
 **架构师**: {{architect}}  
 **版本**: {{version}}
 
-## 服务简介
+> **说明**: 本文档面向**产品/业务**，描述服务与系统上下文；技术架构与技术栈见 [[02-architecture.md]]。
+
+## 概述
 
 {{serviceDescription}}
 
-> **说明**: 本文档从**技术/架构视角**描述服务的定位、职责和技术特性。产品定位、目标用户和价值主张等业务信息请参考 [[../02-product/product-overview.md]] 文档。
-
 ## 服务定位
 
-### 技术定位
+### 业务定位
 
-{{technicalPosition}}
+{{businessPosition}}
 
-### 在微服务架构中的角色
+技术实现见 [[02-architecture.md]]。
 
-{{roleInMicroservicesArchitecture}}
-
-### 服务边界
-
-{{serviceBoundary}}
-
-## 服务职责
+## 服务职责与边界
 
 ### 核心职责
 
@@ -34,32 +28,48 @@
 
 {{responsibilityBoundaries}}
 
-## 服务上下文
+## 系统上下文
 
-> **说明**: 本部分以文字形式描述服务的上下文关系，可视化的系统上下文图请参考 [[context-diagram.md]] 文档。
+### 系统用户
 
-### 上游服务
+| 用户类型      | 描述                 | 交互方式               |
+| ------------- | -------------------- | ---------------------- |
+| {{userType1}} | {{userDescription1}} | {{interactionMethod1}} |
+| {{userType2}} | {{userDescription2}} | {{interactionMethod2}} |
 
-| 服务名称 | 交互方式 | 描述 |
-|---------|---------|------|
-| {{upstreamService1}} | {{interactionMethod1}} | {{description1}} |
-| {{upstreamService2}} | {{interactionMethod2}} | {{description2}} |
+### 能力依赖
 
-### 下游服务
+{{capabilityDependencies}}
 
-| 服务名称 | 交互方式 | 描述 |
-|---------|---------|------|
-| {{downstreamService1}} | {{interactionMethod1}} | {{description1}} |
-| {{downstreamService2}} | {{interactionMethod2}} | {{description2}} |
+技术级依赖见 [[02-architecture.md#系统依赖（技术）]]。
 
-### 外部依赖
+### 系统上下文图
 
-| 依赖类型 | 依赖名称 | 描述 |
-|---------|---------|------|
-| {{dependencyType1}} | {{dependencyName1}} | {{description1}} |
-| {{dependencyType2}} | {{dependencyName2}} | {{description2}} |
+```mermaid
+C4Context
+    title {{serviceName}} 系统上下文图
 
-## 服务特性
+    Person(user1, "{{user1Label}}", "{{user1Description}}")
+    Person(user2, "{{user2Label}}", "{{user2Description}}")
+
+    System(service, "{{serviceName}}", "{{serviceShortDescription}}")
+
+    System_Ext(ext1, "{{externalSystem1Label}}", "{{externalSystem1Description}}")
+    System_Ext(ext2, "{{externalSystem2Label}}", "{{externalSystem2Description}}")
+
+    Rel(user1, service, "{{user1Interaction}}")
+    Rel(user2, service, "{{user2Interaction}}")
+    Rel(service, ext1, "{{serviceToExt1}}")
+    Rel(service, ext2, "{{serviceToExt2}}")
+```
+
+### 关键交互
+
+1. {{keyInteraction1}}
+2. {{keyInteraction2}}
+3. {{keyInteraction3}}
+
+## 服务特性与非功能需求（摘要）
 
 ### 关键特性
 
@@ -67,43 +77,22 @@
 
 ### 非功能性需求
 
-> **说明**: 本服务需要满足的非功能性需求，这些需求会影响系统上下文中的交互设计。
-
 - **性能**: {{performanceRequirement}}
 - **可用性**: {{availabilityRequirement}}
 - **可扩展性**: {{scalabilityRequirement}}
 - **安全性**: {{securityRequirement}}
 
-## 技术栈概览
-
-> **说明**: 本部分提供技术栈的概览信息，详细的架构设计和技术选型理由请参考 [[architecture.md]] 文档。
-
-### 编程语言与框架
-
-{{programmingLanguagesAndFrameworks}}
-
-### 数据存储
-
-{{dataStorage}}
-
-### 消息中间件
-
-{{messageMiddleware}}
-
-### 基础设施
-
-{{infrastructure}}
-
 ## 相关文档
 
-- [[context-diagram.md]] - 系统上下文图
-- [[architecture.md]] - 架构概览
-- [[../02-product/product-overview.md]] - 产品概览（产品/业务视角）
-- [[../03-domain/overview/domain-overview.md]] - 领域概览
+- [[../02-product/01-prd.md]] - 产品需求与路线图
+- [[../02-product/02-features.md]] - 功能规格说明
+- [[../02-product/03-ux-and-metrics.md]] - 体验设计与产品指标
+- [[02-architecture.md]] - 架构概览（含技术栈与选型）
+- [[03-directory-structure.md]] - 目录结构
+- [[../03-domains/01-overview/01-domains-overview.md]] - 领域概览
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
+| 日期     | 版本        | 变更内容 | 变更人        |
+| -------- | ----------- | -------- | ------------- |
 | {{date}} | {{version}} | 初始版本 | {{architect}} |
-

@@ -12,22 +12,22 @@
 
 ### 微服务依赖
 
-| 服务名称 | 依赖类型 | 接口类型 | 描述 | SLA要求 |
-|---------|---------|---------|------|---------|
+| 服务名称          | 依赖类型            | 接口类型           | 描述             | SLA 要求            |
+| ----------------- | ------------------- | ------------------ | ---------------- | ------------------- |
 | {{microservice1}} | {{dependencyType1}} | {{interfaceType1}} | {{description1}} | {{slaRequirement1}} |
 | {{microservice2}} | {{dependencyType2}} | {{interfaceType2}} | {{description2}} | {{slaRequirement2}} |
 
 ### 第三方服务依赖
 
-| 服务名称 | 提供商 | 依赖类型 | 描述 | SLA |
-|---------|--------|---------|------|-----|
+| 服务名称               | 提供商        | 依赖类型            | 描述             | SLA      |
+| ---------------------- | ------------- | ------------------- | ---------------- | -------- |
 | {{thirdPartyService1}} | {{provider1}} | {{dependencyType1}} | {{description1}} | {{sla1}} |
 | {{thirdPartyService2}} | {{provider2}} | {{dependencyType2}} | {{description2}} | {{sla2}} |
 
 ### 基础设施依赖
 
-| 依赖名称 | 类型 | 描述 | 高可用性 |
-|---------|------|------|---------|
+| 依赖名称            | 类型                    | 描述             | 高可用性              |
+| ------------------- | ----------------------- | ---------------- | --------------------- |
 | {{infrastructure1}} | {{infrastructureType1}} | {{description1}} | {{highAvailability1}} |
 | {{infrastructure2}} | {{infrastructureType2}} | {{description2}} | {{highAvailability2}} |
 
@@ -89,13 +89,12 @@ graph TB
 
 ## 相关文档
 
-- [[../01-overview/context-diagram.md]] - 系统上下文图
-- [[../03-apis/rest-api.md]] - REST API文档
+- [[../01-overview/01-service-overview.md#系统上下文]] - 服务概览（业务与系统上下文）
+- [[../03-apis/rest-api.md]] - REST API 文档
 - [[runbook.md]] - 故障处理手册
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
-| {{date}} | 1.0 | 初始版本 | {{architect}} |
-
+| 日期     | 版本 | 变更内容 | 变更人        |
+| -------- | ---- | -------- | ------------- |
+| {{date}} | 1.0  | 初始版本 | {{architect}} |

@@ -12,8 +12,8 @@
 
 ### 核心功能
 
-| 功能ID | 功能名称 | 功能描述 | 优先级 | 状态 |
-|--------|---------|---------|--------|------|
+| 功能 ID  | 功能名称         | 功能描述                | 优先级        | 状态        |
+| -------- | ---------------- | ----------------------- | ------------- | ----------- |
 | FEAT-001 | {{featureName1}} | {{featureDescription1}} | {{priority1}} | {{status1}} |
 | FEAT-002 | {{featureName2}} | {{featureDescription2}} | {{priority2}} | {{status2}} |
 
@@ -37,6 +37,7 @@ flowchart TD
 ```
 
 **功能点**:
+
 - {{functionPoint1}}
 - {{functionPoint2}}
 - {{functionPoint3}}
@@ -44,16 +45,18 @@ flowchart TD
 **约束条件**: {{constraints}}
 
 **依赖关系**:
+
 - 依赖功能: {{dependentFeatures}}
 - 被依赖功能: {{dependOnFeatures}}
 
 **验收标准**:
+
 - [ ] {{criteria1}}
 - [ ] {{criteria2}}
 
-**相关用户故事**: [[user-stories.md#us-xxx]]
+**相关用户故事**: 见 [[01-prd.md]] 用户故事摘要
 
-**相关API**: [[../04-apis/rest-api.md#api-xxx]]
+**相关 API**: [[../04-apis/rest-api.md#api-xxx]]
 
 ## 功能优先级
 
@@ -66,8 +69,8 @@ flowchart TD
 
 ### 功能优先级矩阵
 
-| 功能ID | 功能名称 | 优先级 | 用户价值 | 实现成本 | 备注 |
-|--------|---------|--------|---------|---------|------|
+| 功能 ID  | 功能名称         | 优先级        | 用户价值       | 实现成本  | 备注      |
+| -------- | ---------------- | ------------- | -------------- | --------- | --------- |
 | FEAT-001 | {{featureName1}} | {{priority1}} | {{userValue1}} | {{cost1}} | {{note1}} |
 | FEAT-002 | {{featureName2}} | {{priority2}} | {{userValue2}} | {{cost2}} | {{note2}} |
 
@@ -82,23 +85,21 @@ graph TD
 
 ## 功能路线图
 
-| 版本 | 功能列表 | 计划时间 |
-|------|---------|---------|
+| 版本 | 功能列表      | 计划时间      |
+| ---- | ------------- | ------------- |
 | v1.0 | {{features1}} | {{timeline1}} |
 | v1.1 | {{features2}} | {{timeline2}} |
 | v2.0 | {{features3}} | {{timeline3}} |
 
 ## 相关文档
 
-- [[product-overview.md]] - 产品概览
-- [[prd.md]] - 产品需求文档
-- [[user-stories.md]] - 用户故事
-- [[roadmap.md]] - 产品路线图
-- [[../03-domain/use-cases.md]] - 业务用例
+- [[../01-overview/01-service-overview.md]] - 服务概览（产品定位与目标用户）
+- [[01-prd.md]] - 产品需求文档
+- [[03-ux-and-metrics.md]] - 体验设计与产品指标
+- [[../03-domains/01-overview/01-domains-overview.md]] - 领域概览
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
+| 日期     | 版本        | 变更内容 | 变更人             |
+| -------- | ----------- | -------- | ------------------ |
 | {{date}} | {{version}} | 初始版本 | {{productManager}} |
-

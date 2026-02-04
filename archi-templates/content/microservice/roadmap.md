@@ -1,3 +1,5 @@
+<!-- 采用 3 文件结构时，路线图见 02-product/01-prd 的「版本规划与路线图」章节，本模板仅作参考或历史项目使用。 -->
+
 # {{serviceName}} 产品路线图
 
 **创建日期**: {{date}}  
@@ -31,15 +33,18 @@ gantt
 **目标**: {{version1Goal}}
 
 **核心功能**:
+
 - {{coreFeature1}}
 - {{coreFeature2}}
 - {{coreFeature3}}
 
 **重要功能**:
+
 - {{importantFeature1}}
 - {{importantFeature2}}
 
 **里程碑**:
+
 - {{milestone1}}
 - {{milestone2}}
 
@@ -48,10 +53,12 @@ gantt
 **目标**: {{version2Goal}}
 
 **核心功能**:
+
 - {{coreFeature1}}
 - {{coreFeature2}}
 
 **重要功能**:
+
 - {{importantFeature1}}
 
 ### v2.0 - {{version3Name}} ({{version3Date}})
@@ -59,25 +66,27 @@ gantt
 **目标**: {{version3Goal}}
 
 **核心功能**:
+
 - {{coreFeature1}}
 - {{coreFeature2}}
 
 **重要功能**:
+
 - {{importantFeature1}}
 - {{importantFeature2}}
 
 ## 里程碑
 
-| 里程碑 | 日期 | 目标 | 状态 |
-|--------|------|------|------|
+| 里程碑         | 日期      | 目标      | 状态        |
+| -------------- | --------- | --------- | ----------- |
 | {{milestone1}} | {{date1}} | {{goal1}} | {{status1}} |
 | {{milestone2}} | {{date2}} | {{goal2}} | {{status2}} |
 | {{milestone3}} | {{date3}} | {{goal3}} | {{status3}} |
 
 ## 功能发布计划
 
-| 功能 | 版本 | 计划时间 | 负责人 | 状态 |
-|------|------|---------|--------|------|
+| 功能         | 版本         | 计划时间      | 负责人     | 状态        |
+| ------------ | ------------ | ------------- | ---------- | ----------- |
 | {{feature1}} | {{version1}} | {{timeline1}} | {{owner1}} | {{status1}} |
 | {{feature2}} | {{version2}} | {{timeline2}} | {{owner2}} | {{status2}} |
 
@@ -99,8 +108,8 @@ gantt
 
 > **说明**: 详细的指标定义和目标值请参考 [[metrics.md]] 文档。本节仅列出路线图相关的关键指标。
 
-| 指标 | 目标值 | 当前值 | 达成时间 |
-|------|--------|--------|---------|
+| 指标        | 目标值      | 当前值       | 达成时间  |
+| ----------- | ----------- | ------------ | --------- |
 | {{metric1}} | {{target1}} | {{current1}} | {{date1}} |
 | {{metric2}} | {{target2}} | {{current2}} | {{date2}} |
 
@@ -112,7 +121,6 @@ gantt
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
+| 日期     | 版本        | 变更内容 | 变更人             |
+| -------- | ----------- | -------- | ------------------ |
 | {{date}} | {{version}} | 初始版本 | {{productManager}} |
-

@@ -89,8 +89,8 @@
 
 **接口方法**：
 
-| 方法名称 | 参数 | 返回值 | 描述 | 异常 |
-|---------|------|--------|------|------|
+| 方法名称    | 参数              | 返回值            | 描述                   | 异常                 |
+| ----------- | ----------------- | ----------------- | ---------------------- | -------------------- |
 | {{method1}} | {{method1Params}} | {{method1Return}} | {{method1Description}} | {{method1Exception}} |
 | {{method2}} | {{method2Params}} | {{method2Return}} | {{method2Description}} | {{method2Exception}} |
 
@@ -104,8 +104,8 @@
 
 **接口方法**：
 
-| 方法名称 | 参数 | 返回值 | 描述 | 异常 |
-|---------|------|--------|------|------|
+| 方法名称    | 参数              | 返回值            | 描述                   | 异常                 |
+| ----------- | ----------------- | ----------------- | ---------------------- | -------------------- |
 | {{method3}} | {{method3Params}} | {{method3Return}} | {{method3Description}} | {{method3Exception}} |
 | {{method4}} | {{method4Params}} | {{method4Return}} | {{method4Description}} | {{method4Exception}} |
 
@@ -169,7 +169,7 @@ sequenceDiagram
     participant Client as 业务领域
     participant Module as {{moduleName}}
     participant Infrastructure as 基础设施层
-    
+
     Client->>Module: {{operation1}}
     Module->>Infrastructure: {{operation2}}
     Infrastructure-->>Module: {{result1}}
@@ -183,6 +183,7 @@ sequenceDiagram
 #### 核心库和框架
 
 - **核心库**：{{coreLibrary}}
+
   - 版本：{{coreLibraryVersion}}
   - 优势：{{coreLibraryAdvantages}}
   - 官方文档：{{coreLibraryDocs}}
@@ -194,11 +195,10 @@ sequenceDiagram
 
 #### 依赖库
 
-- **依赖1**：{{dependency1}}
+- **依赖 1**：{{dependency1}}
   - 版本：{{dependency1Version}}
   - 用途：{{dependency1Usage}}
-  
-- **依赖2**：{{dependency2}}
+- **依赖 2**：{{dependency2}}
   - 版本：{{dependency2Version}}
   - 用途：{{dependency2Usage}}
 
@@ -222,13 +222,13 @@ sequenceDiagram
 
 ### 基本使用
 
-#### 使用场景1：{{useCase1}}
+#### 使用场景 1：{{useCase1}}
 
 ```{{language}}
 {{useCase1Code}}
 ```
 
-#### 使用场景2：{{useCase2}}
+#### 使用场景 2：{{useCase2}}
 
 ```{{language}}
 {{useCase2Code}}
@@ -258,8 +258,8 @@ sequenceDiagram
 
 ### 错误类型
 
-| 错误类型 | 错误码 | 描述 | 处理方式 |
-|---------|--------|------|----------|
+| 错误类型       | 错误码         | 描述                  | 处理方式           |
+| -------------- | -------------- | --------------------- | ------------------ |
 | {{errorType1}} | {{errorCode1}} | {{errorDescription1}} | {{errorHandling1}} |
 | {{errorType2}} | {{errorCode2}} | {{errorDescription2}} | {{errorHandling2}} |
 
@@ -304,11 +304,11 @@ sequenceDiagram
 
 - [[../overview/01-shared-modules-overview.md]] - 共享模块概览
 - [[../../infrastructure/01-infrastructure-overview.md]] - 基础设施层概览
-- [[../../01-overview/01-service-overview.md]] - 服务概览
-- [[../../01-overview/03-architecture.md]] - 架构概览
+- [[../../01-overview/01-service-overview.md]] - 服务概览（业务与系统上下文）
+- [[../../01-overview/02-architecture.md]] - 架构概览（技术栈与选型）
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
-| {{date}} | 1.0 | 初始版本 | {{architect}} |
+| 日期     | 版本 | 变更内容 | 变更人        |
+| -------- | ---- | -------- | ------------- |
+| {{date}} | 1.0  | 初始版本 | {{architect}} |

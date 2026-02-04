@@ -30,9 +30,9 @@ graph TB
 
 | 领域名称 | 领域标识 | 职责描述 | 重要性 | 详细文档 |
 |---------|---------|---------|--------|---------|
-| {{domain1Name}} | {{domain1Id}} | {{domain1Description}} | {{domain1Importance}} | [[../{{domain1Id}}/01-overview/01-domain-overview.md]] |
-| {{domain2Name}} | {{domain2Id}} | {{domain2Description}} | {{domain2Importance}} | [[../{{domain2Id}}/01-overview/01-domain-overview.md]] |
-| {{domain3Name}} | {{domain3Id}} | {{domain3Description}} | {{domain3Importance}} | [[../{{domain3Id}}/01-overview/01-domain-overview.md]] |
+| {{domain1Name}} | {{domain1Id}} | {{domain1Description}} | {{domain1Importance}} | [[../{{domain1Id}}/01-domain-overview.md]] |
+| {{domain2Name}} | {{domain2Id}} | {{domain2Description}} | {{domain2Importance}} | [[../{{domain2Id}}/01-domain-overview.md]] |
+| {{domain3Name}} | {{domain3Id}} | {{domain3Description}} | {{domain3Importance}} | [[../{{domain3Id}}/01-domain-overview.md]] |
 
 ## 领域职责划分
 
@@ -124,9 +124,9 @@ graph LR
 - [[02-domain-mapping.md]] - 子领域映射（核心域/支撑域/通用域划分）和上下文映射
 - [[03-bounded-context.md]] - 限界上下文定义和边界
 - [[04-glossary.md]] - 领域术语表（全局）
-- [[../{{domain1Id}}/01-overview/01-domain-overview.md]] - {{domain1Name}} 领域概览
-- [[../{{domain2Id}}/01-overview/01-domain-overview.md]] - {{domain2Name}} 领域概览
-- [[../{{domain3Id}}/01-overview/01-domain-overview.md]] - {{domain3Name}} 领域概览
+- [[../{{domain1Id}}/01-domain-overview.md]] - {{domain1Name}} 领域概览
+- [[../{{domain2Id}}/01-domain-overview.md]] - {{domain2Name}} 领域概览
+- [[../{{domain3Id}}/01-domain-overview.md]] - {{domain3Name}} 领域概览
 
 ## 变更记录
 

@@ -71,11 +71,11 @@ final routes = [
 
 ### 路由参数
 
-| 参数类型 | 说明 | 示例 |
-|---------|------|------|
-| 路径参数 | URL路径中的参数 | `/knowledge-system/:id` |
-| 查询参数 | URL查询字符串中的参数 | `/knowledge-system?id=123` |
-| 状态参数 | 通过状态传递的参数 | `navigate('/page', state: {...})` |
+| 参数类型 | 说明                   | 示例                              |
+| -------- | ---------------------- | --------------------------------- |
+| 路径参数 | URL 路径中的参数       | `/knowledge-system/:id`           |
+| 查询参数 | URL 查询字符串中的参数 | `/knowledge-system?id=123`        |
+| 状态参数 | 通过状态传递的参数     | `navigate('/page', state: {...})` |
 
 ## 导航守卫
 
@@ -114,7 +114,7 @@ class AuthGuard implements RouteGuard {
 
 ### 深链接处理
 
-1. **URL解析**：解析深链接URL，提取路径和参数
+1. **URL 解析**：解析深链接 URL，提取路径和参数
 2. **路由匹配**：匹配对应的路由配置
 3. **参数传递**：将参数传递给目标页面
 4. **页面跳转**：执行页面跳转
@@ -149,11 +149,10 @@ class AuthGuard implements RouteGuard {
 
 - [[01-presentation-overview.md]] - 表现层概览
 - [[../04-application/01-application-overview.md]] - 应用层概览
-- [[../02-product/ux-design.md]] - 用户体验设计
+- [[../02-product/03-ux-and-metrics.md]] - 用户体验设计
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|---------|--------|
-| {{date}} | 1.0 | 初始版本 | {{architect}} |
-
+| 日期     | 版本 | 变更内容 | 变更人        |
+| -------- | ---- | -------- | ------------- |
+| {{date}} | 1.0  | 初始版本 | {{architect}} |

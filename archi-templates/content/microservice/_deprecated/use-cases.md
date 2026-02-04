@@ -8,6 +8,8 @@
 
 本文档描述 {{subdomainName}} 子领域的主要业务用例。
 
+> **说明**：本文档描述业务流程和用例关系。用例中涉及的领域事件定义**不在本文档中重复定义**，而是链接到 [[01-domain-model.md#DomainEvents|领域模型中的事件定义]]（单一真实来源 SSOT）。
+
 ## 用例列表
 
 | 用例ID | 用例名称 | 优先级 | 描述 |
@@ -71,7 +73,9 @@
 
 #### 领域事件
 
-{{domainEvents1}}
+此用例发布的领域事件请参考：[[01-domain-model.md#{{domainEvent1}}|{{domainEvent1}}]]、[[01-domain-model.md#{{domainEvent2}}|{{domainEvent2}}]]
+
+> **说明**：事件定义（包括属性、约束、生命周期等）维护在 [[01-domain-model.md#DomainEvents|领域模型文档]]中作为单一真实来源。本文档仅说明"此用例涉及哪些事件"。
 
 #### 用例图
 

@@ -1,4 +1,4 @@
-# {{serviceName}} {{subdomainName}} UI设计
+# {{serviceName}} {{subdomainName}} UI 设计
 
 **创建日期**: {{date}}  
 **架构师**: {{architect}}  
@@ -6,11 +6,11 @@
 
 ## 概述
 
-本文档描述 {{serviceName}} 的 {{subdomainName}} UI设计，包括页面设计、交互流程、组件使用等。
+本文档描述 {{serviceName}} 的 {{subdomainName}} UI 设计，包括页面设计、交互流程、组件使用等。
 
-{{subdomainName}} UI是表现层的重要组成部分，负责{{subdomainName}}相关的用户界面展示和交互处理。
+{{subdomainName}} UI 是表现层的重要组成部分，负责{{subdomainName}}相关的用户界面展示和交互处理。
 
-## UI架构
+## UI 架构
 
 ### 页面结构
 
@@ -69,8 +69,8 @@ graph TD
 
 ### 使用的组件
 
-| 组件名称 | 用途 | 位置 |
-|---------|------|------|
+| 组件名称       | 用途                | 位置                   |
+| -------------- | ------------------- | ---------------------- |
 | {{component1}} | {{component1Usage}} | {{component1Location}} |
 | {{component2}} | {{component2Usage}} | {{component2Location}} |
 
@@ -90,7 +90,7 @@ graph TD
 - {{state1}}：{{state1Description}}
 - {{state2}}：{{state2Description}}
 
-### 状态Provider
+### 状态 Provider
 
 ```dart
 // 状态Provider示例
@@ -126,7 +126,7 @@ Route(
 
 ### 调用应用服务
 
-{{subdomainName}} UI通过以下方式调用应用服务：
+{{subdomainName}} UI 通过以下方式调用应用服务：
 
 1. **命令处理**：通过命令处理器处理用户操作
 2. **查询数据**：通过查询处理器获取数据
@@ -134,7 +134,7 @@ Route(
 
 ## 代码位置
 
-### UI实现
+### UI 实现
 
 - **页面组件**：`apps/flutter-app/lib/presentation/pages/{{subdomainName}}/`
 - **状态管理**：`apps/flutter-app/lib/presentation/state/{{subdomainName}}/`
@@ -145,13 +145,12 @@ Route(
 - [[../01-presentation-overview.md]] - 表现层概览
 - [[../02-routing-design.md]] - 路由设计
 - [[../03-state-management-design.md]] - 状态管理设计
-- [[../04-ui-components-design.md]] - UI组件设计
+- [[../04-ui-components-design.md]] - UI 组件设计
 - [[../../04-application/{{subdomainName}}/01-application-service.md]] - {{subdomainName}}应用服务设计
-- [[../../02-product/ux-design.md]] - 用户体验设计（交互流程参考）
+- [[../../02-product/03-ux-and-metrics.md]] - 用户体验设计（交互流程参考）
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|---------|--------|
-| {{date}} | 1.0 | 初始版本 | {{architect}} |
-
+| 日期     | 版本 | 变更内容 | 变更人        |
+| -------- | ---- | -------- | ------------- |
+| {{date}} | 1.0  | 初始版本 | {{architect}} |

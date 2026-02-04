@@ -49,8 +49,8 @@
 
 ### 模块概览表
 
-| 模块名称 | 英文名称 | 描述 | 架构定位 | 优先级 |
-|---------|---------|------|---------|--------|
+| 模块名称    | 英文名称           | 描述                   | 架构定位                | 优先级              |
+| ----------- | ------------------ | ---------------------- | ----------------------- | ------------------- |
 | {{module1}} | {{module1English}} | {{module1Description}} | {{module1Architecture}} | {{module1Priority}} |
 | {{module2}} | {{module2English}} | {{module2Description}} | {{module2Architecture}} | {{module2Priority}} |
 
@@ -158,11 +158,11 @@
 - [[../{{module1}}/01-module-overview.md]] - {{module1}}模块概览
 - [[../{{module2}}/01-module-overview.md]] - {{module2}}模块概览
 - [[../../infrastructure/01-infrastructure-overview.md]] - 基础设施层概览
-- [[../../01-overview/01-service-overview.md]] - 服务概览
-- [[../../01-overview/03-architecture.md]] - 架构概览
+- [[../../01-overview/01-service-overview.md]] - 服务概览（业务与系统上下文）
+- [[../../01-overview/02-architecture.md]] - 架构概览（技术栈与选型）
 
 ## 变更记录
 
-| 日期 | 版本 | 变更内容 | 变更人 |
-|------|------|----------|--------|
-| {{date}} | 1.0 | 初始版本 | {{architect}} |
+| 日期     | 版本 | 变更内容 | 变更人        |
+| -------- | ---- | -------- | ------------- |
+| {{date}} | 1.0  | 初始版本 | {{architect}} |
