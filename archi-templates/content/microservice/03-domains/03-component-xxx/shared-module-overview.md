@@ -302,10 +302,10 @@ sequenceDiagram
 
 ## 相关文档
 
-- [[../overview/01-shared-modules-overview.md]] - 共享模块概览
-- [[../../infrastructure/01-infrastructure-overview.md]] - 基础设施层概览
+- [[../01-overview/01-domains-overview.md]] - 系统级领域概览（领域划分、共享组件列表）
 - [[../../01-overview/01-service-overview.md]] - 服务概览（业务与系统上下文）
 - [[../../01-overview/02-architecture.md]] - 架构概览（技术栈与选型）
+- 其他共享组件见 03-domains 下各 03-component-xxx 目录的 01-module-overview.md
 
 ## 变更记录
 

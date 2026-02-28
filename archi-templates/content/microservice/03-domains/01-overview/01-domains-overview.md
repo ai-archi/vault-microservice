@@ -6,7 +6,7 @@
 
 ## 概述
 
-本文档为 {{serviceName}} 微服务的**系统级领域总览**，整合领域划分、依赖与交互、子领域映射、限界上下文、基础设施与集成、共享模块及领域术语表。单领域详细说明见各领域目录下的 `01-domain-overview.md`。
+本文档为 {{serviceName}} 微服务的**系统级领域总览**，整合领域划分、依赖与交互、子领域映射、限界上下文、基础设施与集成、共享组件及领域术语表。单领域详细说明见各领域目录下的 `01-module-overview.md`。
 
 ---
 
@@ -30,9 +30,9 @@ graph TB
 
 | 领域名称        | 领域标识      | 职责描述               | 重要性                | 详细文档                                   |
 | --------------- | ------------- | ---------------------- | --------------------- | ------------------------------------------ |
-| {{domain1Name}} | {{domain1Id}} | {{domain1Description}} | {{domain1Importance}} | [[../{{domain1Id}}/01-domain-overview.md]] |
-| {{domain2Name}} | {{domain2Id}} | {{domain2Description}} | {{domain2Importance}} | [[../{{domain2Id}}/01-domain-overview.md]] |
-| {{domain3Name}} | {{domain3Id}} | {{domain3Description}} | {{domain3Importance}} | [[../{{domain3Id}}/01-domain-overview.md]] |
+| {{domain1Name}} | {{domain1Id}} | {{domain1Description}} | {{domain1Importance}} | [[../{{domain1Id}}/01-module-overview.md]] |
+| {{domain2Name}} | {{domain2Id}} | {{domain2Description}} | {{domain2Importance}} | [[../{{domain2Id}}/01-module-overview.md]] |
+| {{domain3Name}} | {{domain3Id}} | {{domain3Description}} | {{domain3Importance}} | [[../{{domain3Id}}/01-module-overview.md]] |
 
 ### 领域职责划分
 
@@ -88,7 +88,7 @@ graph LR
 | -------------- | --------------- | -------------- | ---------------- |
 | {{publisher1}} | {{subscriber1}} | {{eventType1}} | {{description1}} |
 
-> 事件定义见各领域 02-domain-design 文档。
+> 事件定义见各领域 01-module-overview 文档中的「领域事件定义」章节。
 
 ---
 
@@ -231,13 +231,13 @@ graph TB
 
 ---
 
-## 共享模块
+## 共享组件
 
-| 模块名称          | 模块标识            | 用途                     | 使用领域               | 详细文档                                                   |
-| ----------------- | ------------------- | ------------------------ | ---------------------- | ---------------------------------------------------------- |
-| {{sharedModule1}} | {{sharedModule1Id}} | {{sharedModule1Purpose}} | {{sharedModule1Users}} | [[../02-shared/{{sharedModule1Id}}/01-module-overview.md]] |
+| 组件名称          | 组件标识            | 用途                     | 使用领域               | 详细文档                                         |
+| ----------------- | ------------------- | ------------------------ | ---------------------- | ------------------------------------------------ |
+| {{sharedModule1}} | {{sharedModule1Id}} | {{sharedModule1Purpose}} | {{sharedModule1Users}} | [[../{{sharedModule1Id}}/01-module-overview.md]] |
 
-> 共享模块提供跨领域技术能力；业务领域间依赖通过领域接口或领域事件实现。
+> 共享组件（03-component-xxx）提供跨领域技术能力；业务领域间依赖通过领域接口或领域事件实现。
 
 ---
 
@@ -322,10 +322,10 @@ graph LR
 
 ## 相关文档
 
-- [[../{{domain1Id}}/01-domain-overview.md]] - {{domain1Name}} 领域概览
-- [[../{{domain2Id}}/01-domain-overview.md]] - {{domain2Name}} 领域概览
-- [[../{{domain3Id}}/01-domain-overview.md]] - {{domain3Name}} 领域概览
-- [[../02-shared/01-overview/01-shared-modules-overview.md]] - 共享模块概览
+- [[../{{domain1Id}}/01-module-overview.md]] - {{domain1Name}} 领域概览
+- [[../{{domain2Id}}/01-module-overview.md]] - {{domain2Name}} 领域概览
+- [[../{{domain3Id}}/01-module-overview.md]] - {{domain3Name}} 领域概览
+- 各共享组件见 03-component-xxx 目录下的 01-module-overview.md
 
 ## 变更记录
 
