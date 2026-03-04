@@ -75,9 +75,9 @@
 | 类型     | 名称                | 说明                  |
 | -------- | ------------------- | --------------------- |
 | 端口     | {{portName1}}       | {{portDesc1}}         |
-| 仓储     | {{repositoryName1}} | {{repositoryDesc1}}   |
-| REST API | {{apiName1}}        | {{apiDescription1}}   |
-| 领域事件 | {{eventName1}}      | {{eventDescription1}} |
+| 仓储     | {{repositoryName1}} | {{repositoryDesc1}}；对应代码目录 domain.port 与 infrastructure.persistence |
+| REST API | {{apiName1}}        | {{apiDescription1}}；对应 interfaces.controller 与 §7 接口列表 |
+| 领域事件 | {{eventName1}}      | {{eventDescription1}}；发布者见 §6 应用层，订阅者见 §5.3 |
 
 ---
 
@@ -124,13 +124,66 @@
 
 ### 代码目录结构（DDD 分层）
 
+> **填写说明**：代码目录结构需展开到**子包与关键类/文件**，便于实现落地；以下为推荐结构，按本领域替换占位符并删减或新增包。若本领域以 Spring Boot Starter 方式提供，可增加 `config/` 与 `META-INF/spring`；若仅库形态则可不含 `interfaces/` 或仅保留端口 API。  
+> 占位符约定：`{{domainModule}}` 为模块简短名（用于 AutoConfiguration/Properties 类名，如 AppUser、Auth）；`{{controllerClass}}` 为主控制器类名（如 UserController）；`{{AggregateRoot1}}`、`{{portName1}}`、`{{service1}}` 等与 §5、§6 一致。
+
+以下包结构以**单模块**为例；若拆分为多模块（如 domain-core、infrastructure、server），包名前缀保持 `{{packagePath}}`，将 infrastructure、interfaces 迁出到独立 artifact 时仍按本结构归属。
+
 ```
 src/main/java/{{packagePath}}/
-├── interfaces/       # 表现层：REST 控制器、DTO、契约
-├── application/     # 应用层：应用服务、用例编排
-├── domain/          # 领域层：实体、值对象、领域服务、仓储接口、端口
-└── infrastructure/  # 基础设施层：仓储实现、外部客户端、技术组件
+├── config/                          # 可选：Spring Boot 自动配置（Starter 时必选）
+│   ├── {{domainModule}}AutoConfiguration.java   # 条件装配端口实现、应用服务、Controller
+│   └── {{domainModule}}Properties.java          # 配置属性
+├── interfaces/                      # 表现层：REST 控制器、DTO、契约
+│   ├── controller/                 # REST 控制器
+│   │   └── {{controllerClass}}.java # 与 §7 接口列表对应的端点
+│   ├── dto/                         # 请求/响应 DTO（与 API 契约一致）
+│   │   ├── request/                # 创建/更新/查询请求 DTO
+│   │   └── response/               # 单条/列表/分页响应 DTO
+│   └── convert/                     # 可选：VO 与 application 层 Command/Result 转换
+├── application/                     # 应用层：用例编排、Command/Query
+│   ├── {{service1}}.java            # 主应用服务
+│   └── dto/                         # 命令与查询 DTO
+│       ├── command/                # CreateXxxCommand、UpdateXxxCommand 等
+│       └── query/                  # 查询条件 DTO（若 CQRS 可扩展读模型）
+├── domain/                          # 领域层：实体、值对象、端口、领域异常
+│   ├── model/                      # 聚合根与值对象（或按子域分包）
+│   │   ├── {{AggregateRoot1}}.java # 聚合根：属性与领域行为
+│   │   └── {{ValueObject1}}.java   # 值对象
+│   ├── port/                       # 仓储与能力端口接口定义
+│   │   ├── I{{AggregateRoot1}}Repository.java   # 聚合根持久化与查询
+│   │   └── {{portName1}}.java                    # 对外能力端口（见 §2 领域接口摘要）
+│   └── exception/                  # 领域异常
+│       └── {{domainException1}}.java
+└── infrastructure/                  # 基础设施层：仓储实现、端口实现、技术组件
+    ├── persistence/                # 持久化
+    │   ├── {{AggregateRoot1}}RepositoryImpl.java # 实现 I{{AggregateRoot1}}Repository
+    │   ├── entity/                 # JPA/MyBatis 实体（若适用）
+    │   │   └── {{AggregateRoot1}}Entity.java
+    │   └── mapper/                 # 可选：Entity ↔ 聚合 映射
+    ├── port/                       # 端口实现（对外暴露的端口在此实现）
+    │   └── Default{{portName1}}.java   # {{portName1}} 的实现类
+    └── event/                      # 可选：领域事件发布
+        └── {{domainModule}}DomainEventPublisher.java
+
+src/main/resources/
+└── META-INF/spring/                 # 可选：若本域提供自动配置
+    └── org.springframework.boot.autoconfigure.AutoConfiguration.imports
 ```
+
+#### 分层与包职责对照
+
+| 层 | 包 | 职责 | 对应本文档 |
+| --- | --- | --- | --- |
+| 领域层 | domain.model | {{AggregateRoot1}}、{{ValueObject1}} 等聚合与值对象 | §5.1 聚合设计、§5.2 端口 |
+| 领域层 | domain.port | I{{AggregateRoot1}}Repository、{{portName1}} 接口定义 | §5.2 领域服务与端口、§2 领域接口摘要 |
+| 领域层 | domain.exception | 领域异常类 | §9 错误处理 |
+| 应用层 | application | {{service1}}、Command/Query DTO，用例编排 | §6 应用层设计 |
+| 表现层 | interfaces.controller、interfaces.dto | REST 控制器、请求/响应 DTO，与 §7 API 契约一致 | §7 API 设计 |
+| 基础设施层 | infrastructure.persistence | 仓储实现、实体与表映射 | §8 基础设施层设计 |
+| 基础设施层 | infrastructure.port | {{portName1}} 等端口实现 | §5.2、§8、§10 使用方式 |
+
+**约束**：domain 不依赖 application、infrastructure、interfaces；application 仅依赖 domain 的 port 与 model；interfaces 依赖 application；infrastructure 实现 domain.port，可依赖技术组件与第三方库。
 
 ---
 
@@ -328,8 +381,8 @@ classDiagram
 
 ### 端口实现与关键组件
 
-- **仓储实现**：{{AggregateRoot1}}RepositoryImpl 等，实现领域层定义的仓储接口
-- **端口实现**：{{portName1}} 的具体实现类，依赖基础设施（DB、HTTP 客户端等）
+- **仓储实现**：置于 `infrastructure.persistence/`，如 {{AggregateRoot1}}RepositoryImpl，实现 domain.port 中的 I{{AggregateRoot1}}Repository；含实体映射、表结构或 Mapper。
+- **端口实现**：置于 `infrastructure.port/`，如 Default{{portName1}}，实现 domain.port 中的 {{portName1}}；依赖仓储、技术组件（DB、HTTP 客户端、消息等），供上游或 Starter 装配为 Bean。
 
 ---
 
