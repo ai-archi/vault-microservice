@@ -180,7 +180,7 @@ src/main/resources/
 | 领域层 | domain.exception | 领域异常类 | §9 错误处理 |
 | 应用层 | application | {{service1}}、Command/Query DTO，用例编排 | §6 应用层设计 |
 | 表现层 | interfaces.controller、interfaces.dto | REST 控制器、请求/响应 DTO，与 §7 API 契约一致 | §7 API 设计 |
-| 基础设施层 | infrastructure.persistence | 仓储实现、实体与表映射 | §8 基础设施层设计 |
+| 基础设施层 | infrastructure.persistence | 仓储实现、实体与表映射、物理数据模型（表结构模板） | §8 基础设施层设计 |
 | 基础设施层 | infrastructure.port | {{portName1}} 等端口实现 | §5.2、§8、§10 使用方式 |
 
 **约束**：domain 不依赖 application、infrastructure、interfaces；application 仅依赖 domain 的 port 与 model；interfaces 依赖 application；infrastructure 实现 domain.port，可依赖技术组件与第三方库。
@@ -359,7 +359,48 @@ classDiagram
 
 ### 架构定位
 
-基础设施层实现领域层定义的仓储与端口，封装数据访问、外部客户端与技术组件。
+基础设施层实现领域层定义的仓储与端口，封装数据访问、外部客户端与技术组件，并维护物理数据模型（表结构模板），作为本领域持久化结构的单一真实来源（SSOT）。
+
+### 物理数据模型与表结构模板
+
+> **填写说明**：本节用于描述本领域的**物理数据模型**，包括表清单、关键字段、约束与演进策略，同时给出**DDL 模板**，为 `alavten-db-migration`（或其他迁移工程）中的实际脚本提供规范示例。
+
+#### 表清单概览
+
+| 表名                    | 归属聚合/子域          | 业务含义             | 备注（分区、多租户等）              |
+| ----------------------- | ---------------------- | -------------------- | ----------------------------------- |
+| {{tableName1}}         | {{aggregateOrSubdomain1}} | {{tableBizDesc1}} | {{tableNote1}}                      |
+| {{tableName2}}         | {{aggregateOrSubdomain2}} | {{tableBizDesc2}} | {{tableNote2}}                      |
+
+#### 表结构示例：{{tableName1}}
+
+> 建议与 `server/alavten-db-migration` 中的迁移脚本命名规范保持一致，例如 `V{{version}}__{{module}}_{{changeSummary}}.sql`，并在此给出**推荐列/索引/约束结构**。
+
+```sql
+-- 示例：{{tableName1}} 物理表结构模板
+CREATE TABLE {{tableName1}} (
+    id              BIGINT          NOT NULL COMMENT '主键ID，雪花或序列',
+    tenant_id       BIGINT          NOT NULL COMMENT '租户ID（如适用）',
+    {{bizColumn1}}  VARCHAR(128)    NOT NULL COMMENT '{{bizColumn1Desc}}',
+    {{bizColumn2}}  VARCHAR(256)    NULL     COMMENT '{{bizColumn2Desc}}',
+    status          VARCHAR(32)     NOT NULL COMMENT '状态',
+    created_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    created_by      VARCHAR(64)     NOT NULL COMMENT '创建人',
+    updated_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    updated_by      VARCHAR(64)     NOT NULL COMMENT '更新人',
+    PRIMARY KEY (id),
+    KEY idx_{{tableName1}}_tenant   (tenant_id),
+    KEY idx_{{tableName1}}_status   (status)
+) COMMENT='{{tableBizDesc1}}';
+```
+
+#### 表结构与领域模型映射
+
+- `{{AggregateRoot1}}` ↔ `{{tableName1}}`：主实体与主表映射关系，标明关键字段与值对象展开方式。
+- 值对象持久化策略：内联列（如地址、区间）或独立表；若为独立表，补充对应表名与外键策略。
+- 约束策略：唯一约束、业务主键、软删除标记、多租户隔离（tenant_id / schema）等。
+
+> 若本领域涉及多存储引擎（如关系型数据库 + KV/文档库），可按存储类型分组给出表/集合结构模板。
 
 ### 技术工具
 
@@ -381,7 +422,7 @@ classDiagram
 
 ### 端口实现与关键组件
 
-- **仓储实现**：置于 `infrastructure.persistence/`，如 {{AggregateRoot1}}RepositoryImpl，实现 domain.port 中的 I{{AggregateRoot1}}Repository；含实体映射、表结构或 Mapper。
+- **仓储实现**：置于 `infrastructure.persistence/`，如 {{AggregateRoot1}}RepositoryImpl，实现 domain.port 中的 I{{AggregateRoot1}}Repository；含实体映射、表结构或 Mapper，并维护本领域的物理数据模型（表结构定义与演进模板，如 DDL 片段、迁移脚本示例），与上文“物理数据模型与表结构模板”保持一致。
 - **端口实现**：置于 `infrastructure.port/`，如 Default{{portName1}}，实现 domain.port 中的 {{portName1}}；依赖仓储、技术组件（DB、HTTP 客户端、消息等），供上游或 Starter 装配为 Bean。
 
 ---

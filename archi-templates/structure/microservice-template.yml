@@ -82,33 +82,20 @@ structure:
     name: 04-presentation
     description: 表现层设计文档（全局，如适用）
     children:
-      # 表现层概览
+      # 表现层概览（含路由、状态、UI/主题章节）
       - type: directory
         name: 01-overview
         description: 表现层概览文档
         children:
           - type: file
             name: 01-presentation-overview.md
-            description: 表现层概览，包含表现层定位、职责、设计原则和组件概览
+            description: 表现层概览，含定位、职责、设计原则、路由与导航、状态管理、UI与主题
             template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/presentation-overview.md
-          - type: file
-            name: 02-routing-design.md
-            description: 路由设计，包含路由配置、导航守卫、深链接支持
-            template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/routing-design.md
-          - type: file
-            name: 03-state-management-design.md
-            description: 状态管理设计，包含状态管理方案、状态同步、状态持久化
-            template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/state-management-design.md
-          - type: file
-            name: 04-ui-components-design.md
-            description: UI组件库概览（设计系统、组件规范、主题管理）
-            template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/ui-components-design.md
-      # 组件设计
+      # 组件设计（按类分目录，每类一个合并文档）
       - type: directory
         name: 02-components
         description: 组件设计（基础组件、业务组件、布局组件）
         children:
-          # 组件概览
           - type: directory
             name: 01-overview
             description: 组件概览
@@ -116,140 +103,57 @@ structure:
               - type: file
                 name: 01-components-overview.md
                 description: 组件分类、组件设计原则、组件开发规范
-                template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/ui-components-design.md
-          # 基础组件
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/components-overview.md
           - type: directory
             name: 02-base
-            description: 基础组件（按钮、输入框、表格等通用组件）
+            description: 基础组件（按钮、输入框、表格等合并文档）
             children:
-              - type: directory
-                name: 01-button
-                description: 按钮组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 按钮组件设计，包含组件API、使用示例、样式定制
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 02-input
-                description: 输入框组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 输入框组件设计
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 03-table
-                description: 表格组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 表格组件设计
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 04-component-xxx
-                description: "基础组件（示例，请根据实际组件名称重命名，如modal、dropdown、tooltip等）"
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: "组件设计，包含组件API、使用示例、样式定制"
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-          # 业务组件
+              - type: file
+                name: 01-base-components.md
+                description: 基础组件设计，含 Button/Input/Table 等 API、示例、样式
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/base-components.md
           - type: directory
             name: 03-business
-            description: 业务组件（订单卡片、用户头像等业务相关组件）
+            description: 业务组件（订单卡片、用户头像等合并文档）
             children:
-              - type: directory
-                name: 01-component-xxx
-                description: "{{componentName}}业务组件（示例，请根据实际组件名称重命名，如order-card、user-avatar）"
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: "{{componentName}}业务组件设计，包含组件API、业务逻辑、使用示例"
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-          # 布局组件
+              - type: file
+                name: 01-business-components.md
+                description: 业务组件设计，含组件分节、API、业务逻辑、示例
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/business-components.md
           - type: directory
             name: 04-layout
-            description: 布局组件（头部、侧边栏、容器等布局相关组件）
+            description: 布局组件（头部、侧边栏、容器等合并文档）
             children:
-              - type: directory
-                name: 01-header
-                description: 头部组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 头部组件设计
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 02-sidebar
-                description: 侧边栏组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 侧边栏组件设计
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 03-container
-                description: 容器组件
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: 容器组件设计
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-              - type: directory
-                name: 04-component-xxx
-                description: "布局组件（示例，请根据实际组件名称重命名，如footer、breadcrumb、tabs等）"
-                children:
-                  - type: file
-                    name: 01-component-design.md
-                    description: "布局组件设计，包含组件API、布局规则、使用示例"
-                    template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/component-design.md
-      # 视图/页面设计（可选）
+              - type: file
+                name: 01-layout-components.md
+                description: 布局组件设计，含 Header/Sidebar/Container 等 API、布局规则、示例
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/02-components/layout-components.md
+      # 视图/页面设计（仅概览，复杂视图按需增 02-xxx）
       - type: directory
         name: 03-views
-        description: 视图/页面设计（可选，或合并到components下）
+        description: 视图/页面设计（可选）
         children:
-          # 视图概览
           - type: directory
             name: 01-overview
             description: 视图概览
             children:
               - type: file
                 name: 01-views-overview.md
-                description: 视图分类、视图设计原则、视图与组件的关系
-                template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/presentation-overview.md
-          # 具体视图目录（示例：订单列表视图）
-          - type: directory
-            name: 02-view-xxx
-            description: "视图目录（示例，请根据实际视图名称重命名，如order-list、order-detail、user-profile等）"
-            children:
-              - type: file
-                name: 01-view-design.md
-                description: "视图设计，包含视图结构、视图模型、页面布局、交互流程、组件使用"
-                template: vault-microservice/archi-templates/content/microservice/04-presentation/03-views/ui-design.md
-      # Hooks/Composables设计（如适用）
+                description: 视图分类、设计原则、与组件关系、视图清单
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/03-views/views-overview.md
+      # Hooks/Composables设计（仅概览，复杂 Hook 按需增 02-use-xxx）
       - type: directory
         name: 04-hooks
-        description: Hooks/Composables设计（如适用，用于React Hooks、Vue Composables等可复用逻辑）
+        description: Hooks/Composables设计（如适用）
         children:
-          # Hooks概览
           - type: directory
             name: 01-overview
             description: Hooks概览
             children:
               - type: file
                 name: 01-hooks-overview.md
-                description: Hooks分类、Hooks设计原则、Hooks开发规范
-                template: vault-microservice/archi-templates/content/microservice/04-presentation/01-overview/presentation-overview.md
-          # 具体Hook设计（示例）
-          - type: directory
-            name: 02-use-xxx
-            description: "Hook设计（示例，请根据实际Hook名称重命名，如use-order、use-auth、use-pagination等）"
-            children:
-              - type: file
-                name: 01-hook-design.md
-                description: "Hook设计，包含Hook API、使用示例、最佳实践"
-                template: vault-microservice/archi-templates/content/microservice/04-presentation/04-hooks/hook-design.md
+                description: Hooks分类、设计原则、开发规范、Hooks清单
+                template: vault-microservice/archi-templates/content/microservice/04-presentation/04-hooks/hooks-overview.md
 
   # 5. 数据存储
   - type: directory

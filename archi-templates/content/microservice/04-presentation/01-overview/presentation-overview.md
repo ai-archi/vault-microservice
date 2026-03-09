@@ -46,14 +46,14 @@
 
 ## 表现层组件概览
 
-### 核心组件
+### 核心能力
 
-| 组件名称                     | 职责                                 | 文档                              |
-| ---------------------------- | ------------------------------------ | --------------------------------- |
-| 路由管理（Routing）          | 处理页面导航、路由跳转、深链接       | [[02-routing-design.md]]          |
-| 状态管理（State Management） | 管理 UI 状态，包括页面状态、组件状态 | [[03-state-management-design.md]] |
-| UI 组件库（UI Components）   | 提供可复用的 UI 组件                 | [[04-ui-components-design.md]]    |
-| 主题管理（Theme Management） | 管理应用主题、深色模式、国际化       | [[04-ui-components-design.md]]    |
+| 能力名称                     | 职责                                 | 说明 |
+| ---------------------------- | ------------------------------------ | ---- |
+| 路由与导航（Routing）        | 页面导航、路由跳转、深链接           | 见下文「路由与导航」章节 |
+| 状态管理（State Management） | 管理 UI 状态，包括页面状态、组件状态 | 见下文「状态管理」章节 |
+| UI 组件库（UI Components）   | 提供可复用的 UI 组件                 | 见 [[../02-components/01-overview/01-components-overview]] |
+| 主题与国际化（Theme / i18n） | 应用主题、深色模式、国际化           | 见下文「UI 与主题」章节 |
 
 ### 子领域 UI 设计
 
@@ -61,6 +61,41 @@
 | -------------- | ---------------------------------- |
 | {{subdomain1}} | [[{{subdomain1}}/01-ui-design.md]] |
 | {{subdomain2}} | [[{{subdomain2}}/01-ui-design.md]] |
+
+---
+
+## 路由与导航
+
+路由负责页面导航、路由跳转、参数传递与深链接。
+
+- **路由框架**：{{routing}}（见技术栈表）
+- **路由配置**：定义路由表、路径参数与查询参数；按需配置导航守卫（全局/路由级前置、后置）做权限检查与数据预加载。
+- **深链接**：支持 `{{appScheme}}://{{path}}?{{queryParams}}` 等格式；解析 URL → 匹配路由 → 传递参数 → 跳转。
+- **代码位置**：路由定义与守卫、深链接处理见前端工程路由模块（如 `routing/` 或框架约定目录）。
+
+---
+
+## 状态管理
+
+状态管理负责页面状态、组件状态与用户偏好。
+
+- **状态框架**：{{stateManagement}}（见技术栈表）
+- **状态分类**：页面状态（列表、加载、错误）、组件状态（表单值、展开收起）、全局状态（用户、主题、语言）。
+- **同步与持久化**：通过订阅/Provider 与应用层同步；用户偏好等可持久化到本地，启动时恢复。
+- **实践**：单一数据源、不可变状态、状态最小化；页面与组件状态分离。
+- **代码位置**：状态定义、Provider/Store 配置、持久化逻辑见前端工程 state/ 或 store/。
+
+---
+
+## UI 与主题
+
+UI 组件库与主题/国际化是表现层基础。
+
+- **组件库**：{{uiComponents}}（见技术栈表）；组件分类见 [[../02-components/01-overview/01-components-overview]]。
+- **设计原则**：单一职责、可复用、可组合、可访问（WCAG）。
+- **主题系统**：颜色/字体/间距/圆角/阴影规范；支持深色模式与主题切换。
+- **国际化**：多语言文案、RTL、日期数字本地化。
+- **代码位置**：基础/业务/布局组件与主题配置见前端工程 widgets/、theme/、i18n/。
 
 ## 表现层与应用层的关系
 
@@ -98,9 +133,12 @@
 - [[../01-overview/architecture.md]] - 架构概览
 - [[../04-application/01-application-overview.md]] - 应用层概览
 - [[../02-product/03-ux-and-metrics.md]] - 用户体验设计（产品视角）
-- [[02-routing-design.md]] - 路由设计
-- [[03-state-management-design.md]] - 状态管理设计
-- [[04-ui-components-design.md]] - UI 组件设计
+- [[../02-components/01-overview/01-components-overview.md]] - 组件概览
+- [[../02-components/02-base/01-base-components.md]] - 基础组件
+- [[../02-components/03-business/01-business-components.md]] - 业务组件
+- [[../02-components/04-layout/01-layout-components.md]] - 布局组件
+- [[../03-views/01-overview/01-views-overview.md]] - 视图概览
+- [[../04-hooks/01-overview/01-hooks-overview.md]] - Hooks 概览
 
 ## 变更记录
 
